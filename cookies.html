@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+
+    <title>猜数字游戏</title>
+
+    <style>
+      html {
+        font-family: sans-serif, '黑体';
+      }
+      body {
+        width: 50%;
+        max-width: 800px;
+        min-width: 480px;
+        margin: 0 auto;
+      }
+      .lastResult {
+        color: white;
+        padding: 3px;
+      }
+    </style>
+	
+	<script> 
+	function setCookie(cname,cvalue,exdays){
+		var d = new Date();
+		d.setTime(d.getTime()+(exdays*24*60*60*1000));
+		var expires = "expires="+d.toGMTString();
+		document.cookie = cname+"="+cvalue+"; "+expires;
+	}
+	function getCookie(cname){
+		var name = cname + "=";
+		var ca = document.cookie.split(';');
+		for(var i=0; i<ca.length; i++) {
+			var c = ca[i].trim();
+			if (c.indexOf(name)==0) { return c.substring(name.length,c.length); }
+		}
+		return "";
+	}
+
+	function delCookie(cname) {
+	    
+		document.cookie = cname + "=" + ";expires=Thu, 01 Jan 1970 00:00:00 GMT";
+		
+	  }	
+	  
+	  //function checkCookie(){
+		//var user=getCookie("username");
+		//if (user!=""){
+		//	alert("欢迎 " + user + " 再次访问");
+		//}
+		//else {
+		//	user = prompt("请输入你的名字:","");
+		//	if (user!="" && user!=null){
+        //    setCookie("username",user,30);
+		//	}
+		//}
+	  //}
+	  
+	  </script>
+	
+	
+	
+	
+  </head>
+  
+  <body>
+    <h1>猜数字游戏</h1>
+
+    <p>我刚才随机选定了一个100以内的自然数。看你能否在 10 次以内猜中它。每次我都会告诉你所猜的结果是高了还是低了。</p>
+
+	<input type="submit" value="开始" class="start">
+	<input type="submit" value="删除cookie" class="del">
+	<br>-----
+	<p class="rnum"></p>
+	<br>-----
+	<p class="cookies"></p>
+	
+    <div class="form">
+      <label for="guessField">请猜数: </label><input type="text" id="guessField" class="guessField">
+      <input type="submit" value="确定" class="guessSubmit">
+    </div>
+
+    <div class="resultParas">
+	  <p class="guesses"></p>
+      <p class="lastResult"></p>
+      <p class="lowOrHi"></p>
+    </div>
+
+    <script>
+	  var cv = getCookie("svalue")	  
+	  alert("cookies:" + cv);
+	
+      // 开始编写 JavaScript 代码
+      var randomNumber = document.querySelector('.randomNumber');
+      var guesses = document.querySelector('.guesses');
+      var lastResult = document.querySelector('.lastResult');
+      var lowOrHi = document.querySelector('.lowOrHi');
+      var guessSubmit = document.querySelector('.guessSubmit');
+      var guessField = document.querySelector('.guessField');
+	  
+	  var cookies = document.querySelector('.cookies');
+	  var del = document.querySelector('.del');
+	  var start = document.querySelector('.start');
+	  var rnum = document.querySelector('.rnum');
+	  
+      var guessCount = 1;
+      var resetButton;
+      guessField.focus();
+
+	  
+ 
+	  
+ 
+	  start.addEventListener('click', num);
+	  del.addEventListener('click', delc);
+	  guessSubmit.addEventListener('click', checkGuess);
+	  
+	  function delc(){
+		var oldcv = getCookie("svalue")
+		delCookie("svalue");
+		var newcv = getCookie("svalue")
+		cookies.textContent = 'old: ' + oldcv;
+		alert("new cookies:" + newcv);
+	  }
+	  
+	   
+	  function num(){
+		randomNumber = Math.floor(Math.random() * 100) + 1;
+		setCookie("svalue",randomNumber,30);
+		rnum.textContent = randomNumber;
+		var cv = getCookie("svalue")
+		cookies.textContent = 'cookie: ' + cv;
+	  }
+	  
+      function checkGuess() {
+		var userGuess = Number(guessField.value);
+        if(guessCount === 1) {
+          guesses.textContent = '上次猜的数: ';
+        }
+        guesses.textContent += userGuess + ' ';
+        if(userGuess === randomNumber) {
+          lastResult.textContent = '恭喜你！猜对了！';
+          lastResult.style.backgroundColor = 'green';
+          lowOrHi.textContent = '';
+          setGameOver();
+        } else if(guessCount === 10) {
+          lastResult.textContent = '!!!GAME OVER!!!';
+          lowOrHi.textContent = '';
+          setGameOver();
+        } else {
+          lastResult.textContent = '你猜错了！';
+          lastResult.style.backgroundColor = 'red';
+          if(userGuess < randomNumber) {
+            lowOrHi.textContent = '刚才你猜低了！';
+          } else if(userGuess > randomNumber) {
+            lowOrHi.textContent = '刚才你猜高了！';
+          }
+        }
+        guessCount++;
+        guessField.value = '';
+        guessField.focus();
+      }
+      
+      function setGameOver() {
+        guessField.disabled = true;
+        guessSubmit.disabled = true;
+        resetButton = document.createElement('button');
+        resetButton.textContent = '开始新游戏';
+        document.body.appendChild(resetButton);
+        resetButton.addEventListener('click', resetGame);
+      }
+      function resetGame() {
+        guessCount = 1;
+        var resetParas = document.querySelectorAll('.resultParas p');
+        for(var i = 0 ; i < resetParas.length ; i++) {
+          resetParas[i].textContent = '';
+        }
+        resetButton.parentNode.removeChild(resetButton);
+        guessField.disabled = false;
+        guessSubmit.disabled = false;
+        guessField.value = '';
+        guessField.focus();
+        lastResult.style.backgroundColor = 'white';
+        randomNumber = Math.floor(Math.random() * 100) + 1;
+      }
+    </script>
+  </body> 
+</html>

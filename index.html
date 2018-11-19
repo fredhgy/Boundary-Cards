@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">  
+    <meta name="viewport" content="width=device-width, initial-scale=0.8, maximum-scale=0.8, user-scalable=no">  
+	<title>Boundary Cards</title>
+	<style>
+	html {
+	font-family: sans-serif, '黑体';
+	}
+	body {
+	width: 50%;
+	max-width: 1000px;
+	min-width: 500px;
+	margin:0px auto;
+	}
+	.lastResult {
+	color: white;
+	padding: 3px;
+	}
+	</style>
+</head>
+
+<body onload="version()">
+
+<div id="container" style="width:500px">
+
+<div id="header" style="background-color:red">
+<h1 style="margin-bottom:0;">Boundary Cards</h1>version:<text id="version"></text></div>
+
+<div id="menu" style="background-color:#EEEEEE;height:700px;width:150px;float:left;">
+难度:<td><input name="diffcult" type="radio" onclick="diffcult(1)">普通</td>
+<td><input name="diffcult" type="radio" onclick="diffcult(2)">更高</td>
+<br>
+<br>
+<b>说明</b>
+<p id="intro">x|x代表生物，只能在自己回合使用:例如2|2，攻击力为2，生命为2，当生命为0时消失。在战斗回合，在战场格中每一个上下对应战斗，对手若对应位置没有生物，则对手损失血量，当任一一方血量为0时该方游戏失败。<br><br>-2-2表示法术，可以在任何回合使用，使用后会使电脑玩家指定战场格内的生物损失2点攻击力，2点血量</p>
+</div>
+
+<div id="content" style="background-color:white;height:700px;width:350px;float:left;">
+<br>
+<table border="1">
+<tbody><tr>
+<td><b>电脑法力：</b></td>
+<td id="cmana">0</td>
+</tr>
+<tr>
+<td><b>电脑生命：</b></td>
+<td id="clife">0</td>
+</tr>
+</tbody></table>
+
+<p id="chdis" style="display:block;width:200px"><b>电脑手牌：</b></p>
+<table id="chtdis" style="display:block;width:200px">
+<tbody><tr>
+<td><p id="chand1">null</p></td>
+<td><p id="chand2">null</p></td>
+<td><p id="chand3">null</p></td>
+<td><p id="chand4">null</p></td>
+<td><p id="chand5">null</p></td>
+</tr>
+</tbody></table>
+
+<p id="pb" style="width:125px"><b>战场格：</b></p>
+<table id="pbt" border="1" style="width:125px">
+<tbody><tr>
+<td id="cbattle1">0|0</td>
+<td id="cbattle2">0|0</td>
+<td id="cbattle3">0|0</td>
+</tr>
+<tr>
+<td id="pbattle1">0|0</td>
+<td id="pbattle2">0|0</td>
+<td id="pbattle3">0|0</td>
+</tr>
+</tbody></table>
+
+<br>
+<table border="1">
+<tbody><tr>
+<td><b>你的法力：</b></td>
+<td id="mana">0</td>
+</tr>
+<tr>
+<td><b>你的生命：</b></td>
+<td id="life">0</td>
+</tr>
+</tbody></table>
+
+<br>
+<p id="pbdis" style="display:none;background-color:green;width:150px"><b>放置战场格：</b></p>
+<table id="pbtdis" style="display:none;background-color:green;width:150px" >
+<tbody><tr>
+<td><input name="pbattleblock" type="radio" onclick="pbattleblock1(battlecard)">I</td>
+<td><input name="pbattleblock" type="radio" onclick="pbattleblock2(battlecard)">II</td>
+<td><input name="pbattleblock" type="radio" onclick="pbattleblock3(battlecard)">III</td>
+</tr>
+</tbody></table>
+
+<br>
+<p id="insdis" style="display:none;background-color:green;width:150px"><b>选择目标：</b></p>
+<table id="instdis" style="display:none;background-color:green;width:150px" >
+<tbody><tr>
+<td><input name="instantblock" type="radio" onclick="instantblock1()"><text id="insb1"></text></td>
+<td><input name="instantblock" type="radio" onclick="instantblock2()"><text id="insb2"></text></td>
+<td><input name="instantblock" type="radio" onclick="instantblock3()"><text id="insb3"></text></td>
+</tr>
+</tbody></table>
+
+<p id="hdis" style="display:none;width:200px"><b>手牌：</b></p>
+<table id="htdis" style="display:none;width:200px">
+<tbody><tr>
+<td><input name="phand" type="radio" onclick="pcre1()"><p id="phand1">null</p></td>
+<td><input name="phand" type="radio" onclick="pcre2()"><p id="phand2">null</p></td>
+<td><input name="phand" type="radio" onclick="pcre3()"><p id="phand3">null</p></td>
+<td><input name="phand" type="radio" onclick="pcre4()"><p id="phand4">null</p></td>
+<td><input name="phand" type="radio" onclick="pcre5()"><p id="phand5">null</p></td>
+</tr>
+</tbody></table>
+
+<br>
+<input type="button" id="start" value="开始" onclick="start()">
+<input type="button" id="button1" style="display:none" value="电脑回合" onclick="main1()">
+<input type="button" id="button2" style="display:none" value="战斗回合" onclick="main2()">
+<input type="button" id="button3" style="display:none" value="你的回合" onclick="main3()">
+<input type="button" id="restart" style="display:none" value="重新开始" onclick="restart()">
+</div>
+
+<div id="footer" style="background-color:#FFA500;clear:both;text-align:center;">
+<a href="http://game.heguangyu.net/beta">测试版</a>
+<a href="http://www.heguangyu.net" target="_blank">© heguangyu.net</a>  
+<a href="http://game.heguangyu.net/Boundarycards.apk" download="Boundarycards-beta.apk">安卓版下载</a>
+</div>
+</div>
+
+<script src="pcard.js"></script>
+<script src="pdraw.js"></script>
+<script src="main.js"></script>
+<script src="newbattle.js"></script>
+<!--<script src="battle.js"></script>-->
+<script src="battleblock.js"></script>
+<script src="choosecreature.js"></script>
+<script src="cdraw.js"></script>
+<script src="chand.js"></script>
+<script src="manaenough.js"></script>
+<script src="battlecard.js"></script>
+<script src="version.js"></script>
+<script src="instantblock.js"></script>
+<script src="intro.js"></script>
+
+<script> 
+var mana=0;
+var cmana=0;
+var life=10;
+var clife=10;
+var oldmana=0;
+document.getElementById("life").innerHTML = life;
+document.getElementById("clife").innerHTML = clife;
+document.getElementById("mana").innerHTML = mana;
+document.getElementById("cmana").innerHTML = cmana;
+
+var a;
+function diffcult(a){
+	if(a==1){
+		chdis.style.display = "block";
+		chtdis.style.display = "block";
+	}
+	if(a==2){
+		chdis.style.display = "none";
+		chtdis.style.display = "none";
+	}
+}
+
+//网页版Android无联动
+function deadand(){
+
+}
+</script>
+
+
+</body></html>
