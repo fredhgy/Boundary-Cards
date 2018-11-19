@@ -2,7 +2,9 @@ var order=0;
 var turn=0;
 function start(){
 	introstart();
-	
+	if(cardtot[0]==0){
+		cardtot = [1,2,3,4,5,6,7,8,9,10,11,12];
+	}
 	document.getElementById("hdis").style.display = "block";
 	document.getElementById("htdis").style.display = "block";
 	document.getElementById("hdis").style.backgroundColor="green";
@@ -14,6 +16,7 @@ function start(){
 
 	document.getElementById("button2").style.display = "block";
 	document.getElementById("start").style.display = "none";
+	document.getElementById("deck").style.display = "none";
 	pdraw();
 	order = 1;
 }

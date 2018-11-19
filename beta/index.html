@@ -23,24 +23,42 @@
 
 <body onload="version()">
 
-<div id="container" style="width:500px">
+<div id="container" style="width:550px">
 
 <div id="header" style="background-color:red">
 <h1 style="margin-bottom:0;">Boundary Cards</h1>beta:<text id="version"></text></div>
 
-<div id="menu" style="background-color:#EEEEEE;height:700px;width:150px;float:left;">
+<div id="menu" style="background-color:#EEEEEE;height:750px;width:150px;float:left;">
 难度:<td><input name="diffcult" type="radio" onclick="diffcult(1)">普通</td>
 <td><input name="diffcult" type="radio" onclick="diffcult(2)">更高</td>
 <br>
+<input type="button" id="deck" value="套牌选择" onclick="deck()">
 <br>
 <b>说明</b>
 <p id="intro">x|x代表生物，只能在自己回合使用:例如2|2，攻击力为2，生命为2，当生命为0时消失。在战斗回合，在战场格中每一个上下对应战斗，对手若对应位置没有生物，则对手损失血量，当任一一方血量为0时该方游戏失败。<br><br>-2-2表示法术，可以在任何回合使用，使用后会使电脑玩家指定战场格内的生物损失2点攻击力，2点血量</p>
 </div>
 
-<div id="content" style="background-color:white;height:700px;width:350px;float:left;">
+<div id="content" style="background-color:white;height:750px;width:400px;float:left;">
 <br>
-<table border="1">
-<tbody><tr>
+<table id="decksel" style="display:none">
+<td><input name="deck" type="radio" onclick="yiyid()">1|1|d</td>
+<td><input name="deck" type="radio" onclick="yiyi()">1|1</td>
+<td><input name="deck" type="radio" onclick="erer()">2|2</td>
+<td><input name="deck" type="radio" onclick="sansan()">3|3</td>
+<td><input name="deck" type="radio" onclick="sisi()">4|4</td>
+<td><input name="deck" type="radio" onclick="jianer()">-2-2</td>
+<td><input name="deck" type="radio" onclick="jianyi()">-1-1</td>
+<td><input name="deck" type="radio" onclick="decmana()">mana</td>
+<td><input name="deck" type="radio" onclick="defaultdeck()">默认套牌</td>
+</table>
+<p id="deckdis" style="display:none"></p>
+<br>
+<input type="button" style="display:none;" id="decksure" value="确定" onclick="decksure()">
+<input type="button" style="display:none;" id="deckdel" value="删除" onclick="deckdel()">
+
+
+<table id="cstatus" style="width:120px" border="1">
+<tbody ><tr>
 <td><b>电脑法力：</b></td>
 <td id="cmana">0</td>
 </tr>
@@ -76,8 +94,8 @@
 </tbody></table>
 
 <br>
-<table border="1">
-<tbody><tr>
+<table id="status" style="width:120px" border="1">
+<tbody ><tr>
 <td><b>你的法力：</b></td>
 <td id="mana">0</td>
 </tr>
@@ -88,8 +106,8 @@
 </tbody></table>
 
 <br>
-<p id="pbdis" style="display:none;background-color:green;width:150px"><b>放置战场格：</b></p>
-<table id="pbtdis" style="display:none;background-color:green;width:150px" >
+<p id="pbdis" style="display:none;background-color:green;width:100px"><b>放置战场格：</b></p>
+<table id="pbtdis" style="display:none;background-color:green;width:100px" >
 <tbody><tr>
 <td><input name="pbattleblock" type="radio" onclick="pbattleblock1(battlecard)">I</td>
 <td><input name="pbattleblock" type="radio" onclick="pbattleblock2(battlecard)">II</td>
@@ -147,6 +165,7 @@
 <script src="version.js"></script>
 <script src="instantblock.js"></script>
 <script src="intro.js"></script>
+<script src="deck.js"></script>
 
 <script> 
 var mana=0;
