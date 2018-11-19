@@ -18,6 +18,16 @@ function cre(card){
 			document.getElementById("insb3").innerHTML = cbattle3;
 			introinsblock();
 		}
+		else if(battlecard=="-1-1"){
+			insdis.style.display = "block";
+			instdis.style.display = "block";
+			//hdis.style.display = "none";
+			//htdis.style.display = "none";
+			document.getElementById("insb1").innerHTML = cbattle1;
+			document.getElementById("insb2").innerHTML = cbattle2;
+			document.getElementById("insb3").innerHTML = cbattle3;
+			introinsblock();
+		}
 		else{
 			pbdis.style.display = "block";
 			pbtdis.style.display = "block";

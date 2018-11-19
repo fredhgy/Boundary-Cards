@@ -1,15 +1,15 @@
 var cd;
 var ccard,ccard1,ccard2,ccard3,ccard4,ccard5;
-var ccardtot= [1,2,3,4,5,6,7,8,9,10,11];
+var ccardtot= [1,2,3,4,5,6,7,8,9,10,11,12];
 var cz,czz;
 czz=0;
 function ccardf(){
 	cz=true;
-	if(czz==11){
+	if(czz==12){
 		ccard="null";
 		return ccard;
 	}
-	while(cz&&czz!=11){
+	while(cz&&czz!=12){
 		var cdn = Math.floor((Math.random()*ccardtot.length));
 		cd = ccardtot[cdn];
 		if(cd!=0){
@@ -48,6 +48,10 @@ function ccardf(){
 	if(cd==11){
 		ccard="2|2";
 		ccardtot[10]=0;
+	}
+	if(cd==12){
+		ccard="1|1";
+		ccardtot[11]=0;
 	}
 	return ccard;
 }

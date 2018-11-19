@@ -14,7 +14,20 @@ function pcre1(){
 			alert("法力不足");
 		}
 	}
-	if(order==1&&card1!="-2-2"){
+	if(card1=="-1-1"){
+		var m=manaenough(card1);
+		if(m==true){
+			j1=0; 
+			cre(card1);
+			card1="null";
+			document.getElementById("phand1").innerHTML = card1;
+		}
+		
+		else{
+			alert("法力不足");
+		}
+	}
+	if(order==1&&card1!="-2-2"&&card1!="-1-1"){
 		var m=manaenough(card1);
 		if(m==true){
 			//j1=0; 
@@ -53,7 +66,19 @@ function pcre2(){
 			alert("法力不足");
 		}
 	}
-	if(order==1&&card2!="-2-2"){
+	if(card2=="-1-1"){
+		var m=manaenough(card2);
+		if(m==true){
+			j2=0; 
+			cre(card2); 
+			card2="null"
+			document.getElementById("phand2").innerHTML = card2;
+		}
+		else{
+			alert("法力不足");
+		}
+	}
+	if(order==1&&card2!="-2-2"&&card2!="-1-1"){
 		var m=manaenough(card2);
 		if(m==true){
 			//j2=0;
@@ -91,7 +116,19 @@ function pcre3(){
 			alert("法力不足");
 		}
 	}
-	if(order==1&&card3!="-2-2"){
+	if(card3=="-1-1"){
+		var m=manaenough(card3);
+		if(m==true){
+			j3=0; 
+			cre(card3); 
+			card3="null"
+			document.getElementById("phand3").innerHTML = card3;
+		}
+		else{
+			alert("法力不足");
+		}
+	}
+	if(order==1&&card3!="-2-2"&&card3!="-1-1"){
 		var m=manaenough(card3);
 		if(m==true){
 			//j3=0;
@@ -129,7 +166,19 @@ function pcre4(){
 			alert("法力不足");
 		}
 	}
-	if(order==1&&card4!="-2-2"){
+	if(card4=="-1-1"){
+		var m=manaenough(card4);
+		if(m==true){
+			j4=0; 
+			cre(card4); 
+			card4="null"
+			document.getElementById("phand4").innerHTML = card4;
+		}
+		else{
+			alert("法力不足");
+		}
+	}
+	if(order==1&&card4!="-2-2"&&card4!="-1-1"){
 		var m=manaenough(card4);
 		if (m==true){
 			//j4=0;
@@ -166,7 +215,19 @@ function pcre5(){
 			alert("法力不足");
 		}
 	}
-	if(order==1&&card5!="-2-2"){
+	if(card5=="-1-1"){
+		var m=manaenough(card5);
+		if(m==true){
+			j5=0; 
+			cre(card5); 
+			card5="null"
+			document.getElementById("phand5").innerHTML = card5;
+		}
+		else{
+			alert("法力不足");
+		}
+	}
+	if(order==1&&card5!="-2-2"&&card5!="-1-1"){
 		var m=manaenough(card5);
 		if (m==true){
 			//j5=0;
