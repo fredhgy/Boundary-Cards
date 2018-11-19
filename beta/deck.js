@@ -10,10 +10,30 @@ function deck(){
 	document.getElementById("decksure").style.display="block";
 	document.getElementById("deckdis").style.display="block";
 	document.getElementById("deckdel").style.display="block";
+	document.getElementById("deckback").style.display="block";
+	document.getElementById("deckdisplay").style.display="block";
 	//status.style.display = "none";
 	//cstatus.style.display = "none";
 }
 
+function deckback(){
+	chdis.style.display = "block";
+	chtdis.style.display = "block";
+	pb.style.display = "block";
+	pbt.style.display = "block";
+	document.getElementById("status").style.display="block";
+	document.getElementById("cstatus").style.display="block";
+	document.getElementById("start").style.display="block";
+	document.getElementById("decksel").style.display="none";
+	document.getElementById("decksure").style.display="none";
+	document.getElementById("deckdis").style.display="none";
+	document.getElementById("deckdel").style.display="none";
+	document.getElementById("deckback").style.display="none";
+	document.getElementById("deckdisplay").style.display="none";
+}
+
+
+var decc=0;//如果等于1不用从cookie读取
 function decksure(){
 	chdis.style.display = "block";
 	chtdis.style.display = "block";
@@ -26,15 +46,38 @@ function decksure(){
 	document.getElementById("decksure").style.display="none";
 	document.getElementById("deckdis").style.display="none";
 	document.getElementById("deckdel").style.display="none";
-	setCookie("carddis",carddis,1);
-	setCookie("cardtot",cardtot,1);
-	var cardstore = getCookie("cardtot");
-	alert("已经存储套牌:"+cardstore);
+	document.getElementById("deckback").style.display="none";
+	document.getElementById("deckdisplay").style.display="none";
+	setCookie("cardtot0",cardtot[0],1);
+	setCookie("cardtot1",cardtot[1],1);
+	setCookie("cardtot2",cardtot[2],1);
+	setCookie("cardtot3",cardtot[3],1);
+	setCookie("cardtot4",cardtot[4],1);
+	setCookie("cardtot5",cardtot[5],1);
+	setCookie("cardtot6",cardtot[6],1);
+	setCookie("cardtot7",cardtot[7],1);
+	setCookie("cardtot8",cardtot[8],1);
+	setCookie("cardtot9",cardtot[9],1);
+	setCookie("cardtot10",cardtot[10],1);
+	setCookie("cardtot11",cardtot[11],1);
+	//setCookie("cardtot12",cardtot[1],1)
+	decc=1;
 }
 
 function deckdel(){
-	delCookie("carddis");
-	delCookie("cardtot");
+	
+	delCookie("cardtot0");
+	delCookie("cardtot1");
+	delCookie("cardtot2");
+	delCookie("cardtot3");
+	delCookie("cardtot4");
+	delCookie("cardtot5");
+	delCookie("cardtot6");
+	delCookie("cardtot7");
+	delCookie("cardtot8");
+	delCookie("cardtot9");
+	delCookie("cardtot10");
+	delCookie("cardtot11");
 	cardtot = [0,0,0,0,0,0,0,0,0,0,0,0];
 }
 

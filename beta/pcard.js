@@ -1,5 +1,6 @@
 var d,dn;
-var card,card1,card2,card3,card4,card5;
+var card="";
+var card1,card2,card3,card4,card5;
 var z,zz;
 zz=0;
 function pcard(){

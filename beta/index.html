@@ -91,8 +91,14 @@
 </table>
 <p id="deckdis" style="display:none"></p>
 <br>
+
 <input type="button" style="display:none;" id="decksure" value="确定" onclick="decksure()">
+
 <input type="button" style="display:none;" id="deckdel" value="删除" onclick="deckdel()">
+
+<input type="button" style="display:none;" id="deckdisplay" value="显示当前存储套牌" onclick="deckdisplay()">
+
+<input type="button" style="display:none;" id="deckback" value="返回" onclick="deckback()">
 
 
 <table id="cstatus" style="width:120px" border="1">
@@ -157,9 +163,9 @@
 <p id="insdis" style="display:none;background-color:green;width:150px"><b>选择目标：</b></p>
 <table id="instdis" style="display:none;background-color:green;width:150px" >
 <tbody><tr>
-<td><input name="instantblock" type="radio" onclick="instantblock1()"><text id="insb1"></text></td>
-<td><input name="instantblock" type="radio" onclick="instantblock2()"><text id="insb2"></text></td>
-<td><input name="instantblock" type="radio" onclick="instantblock3()"><text id="insb3"></text></td>
+<td><input name="instantblock" type="radio" onclick="instantblock1(battlecard)"><text id="insb1"></text></td>
+<td><input name="instantblock" type="radio" onclick="instantblock2(battlecard)"><text id="insb2"></text></td>
+<td><input name="instantblock" type="radio" onclick="instantblock3(battlecard)"><text id="insb3"></text></td>
 </tr>
 </tbody></table>
 
