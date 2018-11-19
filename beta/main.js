@@ -2,8 +2,15 @@ var order=0;
 var turn=0;
 function start(){
 	introstart();
-	if(cardtot[0]==0){
+	var cv = getCookie("carddis");
+	cardtot=getCookie("cardtot");
+	
+	if(cardtot==""){
+		alert("无已存储套牌，以默认套牌开始:" );
 		cardtot = [1,2,3,4,5,6,7,8,9,10,11,12];
+	}
+	else{
+		alert("已存储套牌:" + cardtot);
 	}
 	document.getElementById("hdis").style.display = "block";
 	document.getElementById("htdis").style.display = "block";

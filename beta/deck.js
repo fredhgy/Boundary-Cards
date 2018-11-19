@@ -26,9 +26,15 @@ function decksure(){
 	document.getElementById("decksure").style.display="none";
 	document.getElementById("deckdis").style.display="none";
 	document.getElementById("deckdel").style.display="none";
+	setCookie("carddis",carddis,1);
+	setCookie("cardtot",cardtot,1);
+	var cardstore = getCookie("cardtot");
+	alert("已经存储套牌:"+cardstore);
 }
 
 function deckdel(){
+	delCookie("carddis");
+	delCookie("cardtot");
 	cardtot = [0,0,0,0,0,0,0,0,0,0,0,0];
 }
 
@@ -118,8 +124,9 @@ function decmana(){
 	deckdisplay();
 }
 
+var carddis;
 function deckdisplay(){
-	var carddis = [0,0,0,0,0,0,0,0,0,0,0,0];
+	carddis = [0,0,0,0,0,0,0,0,0,0,0,0];
 	for(var decs=0;decs<=11;decs++){
 		if(cardtot[decs]==1){
 			carddis[decs]="mana";
