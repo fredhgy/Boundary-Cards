@@ -1,9 +1,9 @@
 function version(){
-	var version= "19.11.18.2123";
+	var version= "19.11.18.2140";
 	document.getElementById("version").innerHTML = version;
 }
 
 function andversion(){
-	var andversion="19.11.18.2123";
+	var andversion="19.11.18.2140";
 	document.getElementById("andversion").innerHTML = andversion;
 }
