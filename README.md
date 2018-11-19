@@ -1,1 +1,7 @@
-Boundary Cards
+#Boundary Cards
+
+###2018-11-09 ver.19.11.18.2018 updates:
+* 新增自建套牌
+	* 包含利用cookies存储套牌
+* 新增-1-1瞬间牌
+* 修复了-2-2，-1-1瞬间牌的结算问题
