@@ -79,6 +79,7 @@ function deckdel(){
 	delCookie("cardtot10");
 	delCookie("cardtot11");
 	cardtot = [0,0,0,0,0,0,0,0,0,0,0,0];
+	deckdisplay();
 }
 
 var cardtot = [0,0,0,0,0,0,0,0,0,0,0,0];
