@@ -20,26 +20,31 @@ function pbattleblock1(card){
 			card1="null";
 			j1=0;
 			document.getElementById("phand1").innerHTML = card1;
+			return;
 		}
 		if(card2==card){
 			card2="null";
 			j2=0;
 			document.getElementById("phand2").innerHTML = card2;
+			return;
 		}
 		if(card3==card){
 			card3="null";
 			j3=0;
 			document.getElementById("phand3").innerHTML = card3;
+			return;
 		}
 		if(card4==card){
 			card4="null";
 			j4=0;
 			document.getElementById("phand4").innerHTML = card4;
+			return;
 		}
 		if(card5==card){
 			card5="null";
 			j5=0;
 			document.getElementById("phand5").innerHTML = card5;
+			return;
 		}
 		
 	}
@@ -62,26 +67,31 @@ function pbattleblock2(card){
 			card1="null";
 			j1=0;
 			document.getElementById("phand1").innerHTML = card1;
+			return;
 		}
 		if(card2==card){
 			card2="null";
 			j2=0;
 			document.getElementById("phand2").innerHTML = card2;
+			return;
 		}
 		if(card3==card){
 			card3="null";
 			j3=0;
 			document.getElementById("phand3").innerHTML = card3;
+			return;
 		}
 		if(card4==card){
 			card4="null";
 			j4=0;
 			document.getElementById("phand4").innerHTML = card4;
+			return;
 		}
 		if(card5==card){
 			card5="null";
 			j5=0;
 			document.getElementById("phand5").innerHTML = card5;
+			return;
 		}
 	}
 	else{
@@ -103,26 +113,31 @@ function pbattleblock3(card){
 			card1="null";
 			j1=0;
 			document.getElementById("phand1").innerHTML = card1;
+			return;
 		}
 		if(card2==card){
 			card2="null";
 			j2=0;
 			document.getElementById("phand2").innerHTML = card2;
+			return;
 		}
 		if(card3==card){
 			card3="null";
 			j3=0;
 			document.getElementById("phand3").innerHTML = card3;
+			return;
 		}
 		if(card4==card){
 			card4="null";
 			j4=0;
 			document.getElementById("phand4").innerHTML = card4;
+			return;
 		}
 		if(card5==card){
 			card5="null";
 			j5=0;
 			document.getElementById("phand5").innerHTML = card5;
+			return;
 		}
 	}
 	else{

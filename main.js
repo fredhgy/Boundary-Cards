@@ -2,6 +2,28 @@ var order=0;
 var turn=0;
 function start(){
 	introstart();
+	if(decc!=1){
+		cardtot[0]=getCookie("cardtot0");
+		cardtot[1]=getCookie("cardtot1");
+		cardtot[2]=getCookie("cardtot2");
+		cardtot[3]=getCookie("cardtot3");
+		cardtot[4]=getCookie("cardtot4");
+		cardtot[5]=getCookie("cardtot5");
+		cardtot[6]=getCookie("cardtot6");
+		cardtot[7]=getCookie("cardtot7");
+		cardtot[8]=getCookie("cardtot8");
+		cardtot[9]=getCookie("cardtot9");
+		cardtot[10]=getCookie("cardtot10");
+		cardtot[11]=getCookie("cardtot11");
+	}
+	if(cardtot[0]==""){
+		alert("无已存储套牌，以默认套牌开始:" );
+		cardtot = [1,2,3,4,5,6,7,8,9,10,11,12];
+	}
+	else{
+		deckdisplay();
+		alert("已存储套牌:" + carddis);
+	}
 	
 	document.getElementById("hdis").style.display = "block";
 	document.getElementById("htdis").style.display = "block";
@@ -14,6 +36,7 @@ function start(){
 
 	document.getElementById("button2").style.display = "block";
 	document.getElementById("start").style.display = "none";
+	document.getElementById("deck").style.display = "none";
 	pdraw();
 	order = 1;
 }

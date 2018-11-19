@@ -30,6 +30,11 @@ function manaenough(card){
 		document.getElementById("mana").innerHTML = mana;
 		return true;
 	}
+	if(card=="-1-1"&&mana>=1){
+		mana=mana-1;
+		document.getElementById("mana").innerHTML = mana;
+		return true;
+	}
 	if(card=="mana"){
 		return 3;
 	}
