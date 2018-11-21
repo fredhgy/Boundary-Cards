@@ -1,38 +1,47 @@
+var bo=0;
+var cbo=0;
 //判断法力是否足够
 function manaenough(card){
 	if(card=="1|1|d"&&mana>=2){
 		mana=mana-2;
 		document.getElementById("mana").innerHTML = mana;
+		bo=1;
 		return true;
 	}
 	if(card=="1|1"&&mana>=1){
 		mana=mana-1;
 		document.getElementById("mana").innerHTML = mana;
+		bo=1;
 		return true;
 	}
 	if(card=="2|2"&&mana>=2){
 		mana=mana-2;
 		document.getElementById("mana").innerHTML = mana; 
+		bo=1;
 		return true;
 	}
 	if(card=="3|3"&&mana>=3){
 		mana=mana-3;
 		document.getElementById("mana").innerHTML = mana;
+		bo=1;
 		return true;
 	}
 	if(card=="4|4"&&mana>=4){
 		mana=mana-4;
 		document.getElementById("mana").innerHTML = mana;
+		bo=1;
 		return true;
 	}
 	if(card=="-2-2"&&mana>=2){
 		mana=mana-2;
 		document.getElementById("mana").innerHTML = mana;
+		cbo=1;
 		return true;
 	}
 	if(card=="-1-1"&&mana>=1){
 		mana=mana-1;
 		document.getElementById("mana").innerHTML = mana;
+		cbo=1;
 		return true;
 	}
 	if(card=="mana"){

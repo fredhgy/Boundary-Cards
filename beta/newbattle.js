@@ -382,11 +382,11 @@ function returnpandt(){
 		cbattle3="0|0";
 		cb3=0;
 	}
-	document.getElementById("pbattle1").innerHTML = pbattle1;
-	document.getElementById("cbattle1").innerHTML = cbattle1;
-	document.getElementById("pbattle2").innerHTML = pbattle2;
-	document.getElementById("cbattle2").innerHTML = cbattle2;
-	document.getElementById("pbattle3").innerHTML = pbattle3;
-	document.getElementById("cbattle3").innerHTML = cbattle3;
-	
+	//document.getElementById("pbattle1").innerHTML = pbattle1;
+	//document.getElementById("cbattle1").innerHTML = cbattle1;
+	//document.getElementById("pbattle2").innerHTML = pbattle2;
+	//document.getElementById("cbattle2").innerHTML = cbattle2;
+	//document.getElementById("pbattle3").innerHTML = pbattle3;
+	//document.getElementById("cbattle3").innerHTML = cbattle3;
+	battlepicture();
 }
