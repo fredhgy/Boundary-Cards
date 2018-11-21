@@ -171,6 +171,18 @@ function decmana(){
 var carddis;
 function deckdisplay(){
 	carddis = [0,0,0,0,0,0,0,0,0,0,0,0];
+	cardtot[0]=getCookie("cardtot0");
+	cardtot[1]=getCookie("cardtot1");
+	cardtot[2]=getCookie("cardtot2");
+	cardtot[3]=getCookie("cardtot3");
+	cardtot[4]=getCookie("cardtot4");
+	cardtot[5]=getCookie("cardtot5");
+	cardtot[6]=getCookie("cardtot6");
+	cardtot[7]=getCookie("cardtot7");
+	cardtot[8]=getCookie("cardtot8");
+	cardtot[9]=getCookie("cardtot9");
+	cardtot[10]=getCookie("cardtot10");
+	cardtot[11]=getCookie("cardtot11");
 	for(var decs=0;decs<=11;decs++){
 		if(cardtot[decs]==1){
 			carddis[decs]="mana";

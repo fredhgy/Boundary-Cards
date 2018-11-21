@@ -130,9 +130,9 @@
 <td ><img id="cbp3" src="null.gif" onclick="instantblock3(battlecard)"></td>
 </tr>
 <tr>
-<td ><img id="pbp1" src="null.gif" onclick="pbattleblock1(battlecard)"></td>
-<td ><img id="pbp2" src="null.gif" onclick="pbattleblock2(battlecard)"></td>
-<td ><img id="pbp3" src="null.gif" onclick="pbattleblock3(battlecard)"></td>
+<td ><img id="pbp1" src="null.gif" onclick="pbattleblock1(battlecard)"><input id="pac1" type="checkbox" style="display:none"/></td>
+<td ><img id="pbp2" src="null.gif" onclick="pbattleblock2(battlecard)"><input id="pac2" type="checkbox" style="display:none"/></td>
+<td ><img id="pbp3" src="null.gif" onclick="pbattleblock3(battlecard)"><input id="pac3" type="checkbox" style="display:none"/></td>
 </tr>
 </tbody></table>
 
@@ -162,8 +162,9 @@
 <br>
 <input type="button" id="start" value="开始" onclick="start()">
 <input type="button" id="button1" style="display:none" value="电脑回合" onclick="main1()">
-<input type="button" id="button2" style="display:none" value="战斗回合" onclick="main2()">
+<input type="button" id="button2" style="display:none" value="战斗结算" onclick="main2()">
 <input type="button" id="button3" style="display:none" value="你的回合" onclick="main3()">
+<input type="button" id="button4" style="display:none" value="战斗选择" onclick="main4()">
 <input type="button" id="restart" style="display:none" value="重新开始" onclick="restart()">
 </div>
 

@@ -21,6 +21,10 @@ function pbattleblock1(card){
 		document.getElementById("pbp2").style.border = "0px";
 		document.getElementById("pbp3").style.border = "0px";
 		bo=0;
+		if(pb1==1||pb2==1||pb3==1){
+				document.getElementById("button4").style.display = "block";
+				document.getElementById("button2").style.display = "none";
+		}
 		if(card1==card){
 			card1="null";
 			j1=0;
@@ -34,6 +38,7 @@ function pbattleblock1(card){
 			document.getElementById("phand2").innerHTML = card2;
 			cardpicture();
 			return;
+			
 		}
 		if(card3==card){
 			card3="null";
@@ -63,6 +68,7 @@ function pbattleblock1(card){
 	else{
 		alert("already have");
 	}
+	
 }
 
 function pbattleblock2(card){
@@ -80,6 +86,10 @@ function pbattleblock2(card){
 		document.getElementById("pbp2").style.border = "0px";
 		document.getElementById("pbp3").style.border = "0px";
 		bo=0;
+		if(pb1==1||pb2==1||pb3==1){
+				document.getElementById("button4").style.display = "block";
+				document.getElementById("button2").style.display = "none";
+		}
 		if(card1==card){
 			card1="null";
 			j1=0;
@@ -140,6 +150,10 @@ function pbattleblock3(card){
 		document.getElementById("pbp2").style.border = "0px";
 		document.getElementById("pbp3").style.border = "0px";
 		bo=0;
+		if(pb1==1||pb2==1||pb3==1){
+				document.getElementById("button4").style.display = "block";
+				document.getElementById("button2").style.display = "none";
+		}
 		if(card1==card){
 			card1="null";
 			j1=0;
