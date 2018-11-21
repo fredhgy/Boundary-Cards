@@ -39,6 +39,7 @@ function start(){
 	document.getElementById("deck").style.display = "none";
 	pdraw();
 	order = 1;
+	cardpicture();
 }
 
 //电脑回合
@@ -70,21 +71,16 @@ function main1(){
 
 //战斗回合
 function main2(){
-	document.getElementById("cbattle1").style.backgroundColor="white";
-	document.getElementById("cbattle2").style.backgroundColor="white";
-	document.getElementById("cbattle3").style.backgroundColor="white";
+	cardpicture();
+	battlepicture();
 	
 	document.getElementById("hdis").style.backgroundColor="white";
-
 	document.getElementById("chdis").style.backgroundColor="white";
-
 	document.getElementById("pb").style.backgroundColor="green";
-
 	
-	pbdis.style.display = "none";
-	pbtdis.style.display = "none"
-	//hdis.style.display = "none";
-	//htdis.style.display = "none";
+	document.getElementById("cbp1").style.border="0px";
+	document.getElementById("cbp2").style.border="0px";
+	document.getElementById("cbp3").style.border="0px";
 	
 	if(order==1){
 		document.getElementById("button1").style.display = "block";
@@ -106,6 +102,7 @@ function main2(){
 
 //你的回合
 function main3(){
+	
 	mana=oldmana;
 	introstart();
 	if(life<5){
@@ -119,22 +116,19 @@ function main3(){
 	htdis.style.display = "block";
 	
 	document.getElementById("hdis").style.backgroundColor="green";
-
 	document.getElementById("chdis").style.backgroundColor="white";
-
 	document.getElementById("pb").style.backgroundColor="white";
-
 	
 	document.getElementById("cmana").innerHTML = cmana;
 	document.getElementById("mana").innerHTML = mana;
-	
-	
+		
 	document.getElementById("button3").style.display = "none";
 	document.getElementById("button2").style.display = "block";
 	document.getElementById("button1").style.display = "none";
 	order = 1;
 	turn = 0;
 	pdraw();
+	cardpicture();
 }
 
 function dead(){
