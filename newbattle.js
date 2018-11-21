@@ -192,74 +192,113 @@ function getpandt(){
 }
 
 function battle(){
-	getpandt();
-	if(tough1==0&&cpower1!=0&&turn==1){
-		life = life - cpower1;
-		document.getElementById("life").style.backgroundColor="yellow";
-	}
-	if(tough2==0&&cpower2!=0&&turn==1){
-		life = life - cpower2;
-		document.getElementById("life").style.backgroundColor="yellow";
-	}
-	if(tough3==0&&cpower3!=0&&turn==1){
-		life = life - cpower3;
-		document.getElementById("life").style.backgroundColor="yellow";
+	if(turn==0){
+		pa1 = document.getElementById("pac1").checked;
+		pa2 = document.getElementById("pac2").checked;
+		pa3 = document.getElementById("pac3").checked;
+		if(pa1){
+			if(ctough1==0&&power1!=0){
+				clife = clife - power1;
+				document.getElementById("clife").style.backgroundColor="yellow";
+			}
+			if(abi1==1||cabi1==1){
+				if(ctough1==0||tough1==0){
+				
+				}
+				else{
+					power1=0;tough1=0;abi1=0;
+					cpower1=0;ctough1=0;cabi1=0;
+				}
+			}
+			ctough1=ctough1-power1;
+			tough1=tough1-cpower1;
+		}
+		if(pa2){
+			if(ctough2==0&&power2!=0){
+				clife = clife - power2;
+				document.getElementById("clife").style.backgroundColor="yellow";
+			}
+			if(abi2==1||cabi2==1){
+				if(ctough2==0||tough2==0){
+				
+				}
+				else{
+					power2=0;tough2=0;abi2=0;
+					cpower2=0;ctough2=0;cabi2=0;
+				}
+			}
+			ctough2=ctough2-power2;
+			tough2=tough2-cpower2;
+		}
+		if(pa3){
+			if(ctough3==0&&power3!=0){
+				clife = clife - power3;
+				document.getElementById("clife").style.backgroundColor="yellow";
+			}
+			if(abi3==1||cabi3==1){
+				if(ctough3==0||tough3==0){
+				
+				}
+				else{
+					power3=0;tough3=0;abi3=0;
+					cpower3=0;ctough3=0;cabi3=0;
+				}
+			}
+			ctough3=ctough3-power3;
+			tough3=tough3-cpower3;
+		}
 	}
 	//
-	if(ctough1==0&&power1!=0&&turn==0){
-		clife = clife - power1;
-		document.getElementById("clife").style.backgroundColor="yellow";
-	}
-	if(ctough2==0&&power2!=0&&turn==0){
-		clife = clife - power2;
-		document.getElementById("clife").style.backgroundColor="yellow";
-	}
-	if(ctough3==0&&power3!=0&&turn==0){
-		clife = clife - power3;
-		document.getElementById("clife").style.backgroundColor="yellow";
-	}
-	//
-	if(abi1==1||cabi1==1){
-		if(ctough1==0||tough1==0){
-		
+	if(turn==1){
+		if(tough1==0&&cpower1!=0){
+			life = life - cpower1;
+			document.getElementById("life").style.backgroundColor="yellow";
 		}
-		else{
-			power1=0;tough1=0;abi1=0;
-			cpower1=0;ctough1=0;cabi1=0;
+		if(tough2==0&&cpower2!=0){
+			life = life - cpower2;
+			document.getElementById("life").style.backgroundColor="yellow";
 		}
+		if(tough3==0&&cpower3!=0){
+			life = life - cpower3;
+			document.getElementById("life").style.backgroundColor="yellow";
+		}
+		//
+		if(abi1==1||cabi1==1){
+			if(ctough1==0||tough1==0){
+			
+			}
+			else{
+				power1=0;tough1=0;abi1=0;
+				cpower1=0;ctough1=0;cabi1=0;
+			}
+		}
+		if(abi2==1||cabi2==1){
+			if(ctough2==0||tough2==0){
+			
+			}
+			else{
+				power2=0;tough2=0;abi2=0;
+				cpower2=0;ctough2=0;cabi2=0;
+			}
+		}
+		if(abi3==1||cabi3==1){
+			if(ctough3==0||tough3==0){
+			
+			}
+			else{
+				power3=0;tough3=0;abi3=0;
+				cpower3=0;ctough3=0;cabi3=0;
+			}
+		}
+		tough1=tough1-cpower1;
+		tough2=tough2-cpower2;
+		tough3=tough3-cpower3;
+		ctough1=ctough1-power1;
+		ctough2=ctough2-power2;
+		ctough3=ctough3-power3;
 	}
-	if(abi2==1||cabi2==1){
-		if(ctough2==0||tough2==0){
-		
-		}
-		else{
-			power2=0;tough2=0;abi2=0;
-			cpower2=0;ctough2=0;cabi2=0;
-		}
-	}
-	if(abi3==1||cabi3==1){
-		if(ctough3==0||tough3==0){
-		
-		}
-		else{
-			power3=0;tough3=0;abi3=0;
-			cpower3=0;ctough3=0;cabi3=0;
-		}
-	}
-	//
-	tough1=tough1-cpower1;
-	tough2=tough2-cpower2;
-	tough3=tough3-cpower3;
-	
-	ctough1=ctough1-power1;
-	ctough2=ctough2-power2;
-	ctough3=ctough3-power3;
-	//
-	returnpandt();
-	
 	document.getElementById("life").innerHTML = life;
 	document.getElementById("clife").innerHTML = clife;
-	
 }
 
 function returnpandt(){

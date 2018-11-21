@@ -40,6 +40,7 @@ function start(){
 	pdraw();
 	order = 1;
 	cardpicture();
+	
 }
 
 //电脑回合
@@ -74,6 +75,10 @@ function main2(){
 	cardpicture();
 	battlepicture();
 	
+	document.getElementById("pac1").style.display = "none";
+	document.getElementById("pac2").style.display = "none";
+	document.getElementById("pac3").style.display = "none";
+	
 	document.getElementById("hdis").style.backgroundColor="white";
 	document.getElementById("chdis").style.backgroundColor="white";
 	document.getElementById("pb").style.backgroundColor="green";
@@ -81,7 +86,7 @@ function main2(){
 	document.getElementById("cbp1").style.border="0px";
 	document.getElementById("cbp2").style.border="0px";
 	document.getElementById("cbp3").style.border="0px";
-	
+	document.getElementById("button4").style.display = "none";
 	if(order==1){
 		document.getElementById("button1").style.display = "block";
 		document.getElementById("button2").style.display = "none";
@@ -95,7 +100,9 @@ function main2(){
 		document.getElementById("button1").style.display = "none";
 		introcbattle()
 	}
+	getpandt();
 	battle();
+	returnpandt();
 	dead();
 	
 }
@@ -123,12 +130,46 @@ function main3(){
 	document.getElementById("mana").innerHTML = mana;
 		
 	document.getElementById("button3").style.display = "none";
-	document.getElementById("button2").style.display = "block";
 	document.getElementById("button1").style.display = "none";
 	order = 1;
 	turn = 0;
 	pdraw();
 	cardpicture();
+	document.getElementById("button2").style.display = "block";
+	if(pb1==1||pb2==1||pb3==1){
+		document.getElementById("button4").style.display = "block";
+		document.getElementById("button2").style.display = "none";
+	}
+	
+}
+
+//战斗选择
+var pa1;
+var pa2;
+var pa3;
+function main4(){
+	document.getElementById("button4").style.display = "none";
+	document.getElementById("button2").style.display = "block";
+	if(pb1==1){
+		document.getElementById("pac1").style.display = "block";
+		document.getElementById("pac1").checked = true;
+		
+	}
+	if(pb2==1){
+		document.getElementById("pac2").style.display = "block";
+		document.getElementById("pac2").checked = true;
+		
+	}
+	if(pb3==1){
+		document.getElementById("pac3").style.display = "block";
+		document.getElementById("pac3").checked = true;
+		
+	}
+
+	
+	
+	
+	
 }
 
 function dead(){
