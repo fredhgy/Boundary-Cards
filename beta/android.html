@@ -125,14 +125,14 @@
 <p id="pb" style="width:auto"><b>战场格：</b></p>
 <table id="pbt" style="width:auto">
 <tbody><tr>
-<td id="cbattle1">0|0</td>
-<td id="cbattle2">0|0</td>
-<td id="cbattle3">0|0</td>
+<td ><img id="cbp1" src="null.gif" onclick="instantblock1(battlecard)"></td>
+<td ><img id="cbp2" src="null.gif" onclick="instantblock2(battlecard)"></td>
+<td ><img id="cbp3" src="null.gif" onclick="instantblock3(battlecard)"></td>
 </tr>
 <tr>
-<td id="pbattle1">0|0</td>
-<td id="pbattle2">0|0</td>
-<td id="pbattle3">0|0</td>
+<td ><img id="pbp1" src="null.gif" onclick="pbattleblock1(battlecard)"></td>
+<td ><img id="pbp2" src="null.gif" onclick="pbattleblock2(battlecard)"></td>
+<td ><img id="pbp3" src="null.gif" onclick="pbattleblock3(battlecard)"></td>
 </tr>
 </tbody></table>
 
@@ -145,26 +145,6 @@
 <tr>
 <td><b>你的生命：</b></td>
 <td id="life">0</td>
-</tr>
-</tbody></table>
-
-<br>
-<p id="pbdis" style="display:none;background-color:green;width:auto"><b>放置战场格：</b></p>
-<table id="pbtdis" style="display:none;background-color:green;width:auto" >
-<tbody><tr>
-<td><input name="pbattleblock" type="radio" onclick="pbattleblock1(battlecard)">I</td>
-<td><input name="pbattleblock" type="radio" onclick="pbattleblock2(battlecard)">II</td>
-<td><input name="pbattleblock" type="radio" onclick="pbattleblock3(battlecard)">III</td>
-</tr>
-</tbody></table>
-
-<br>
-<p id="insdis" style="display:none;background-color:green;width:auto"><b>选择目标：</b></p>
-<table id="instdis" style="display:none;background-color:green;width:auto" >
-<tbody><tr>
-<td><input name="instantblock" type="radio" onclick="instantblock1(battlecard)"><text id="insb1"></text></td>
-<td><input name="instantblock" type="radio" onclick="instantblock2(battlecard)"><text id="insb2"></text></td>
-<td><input name="instantblock" type="radio" onclick="instantblock3(battlecard)"><text id="insb3"></text></td>
 </tr>
 </tbody></table>
 

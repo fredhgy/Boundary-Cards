@@ -4,6 +4,6 @@ function version(){
 }
 
 function andversion(){
-	var andversion="19.11.18.2140";
+	var andversion="19.11.18.1805";
 	document.getElementById("andversion").innerHTML = andversion;
 }
