@@ -8,34 +8,32 @@ function cre(card){
 	}
 	else{
 		battlecard = card;
-		if(battlecard=="-2-2"){
-			insdis.style.display = "block";
-			instdis.style.display = "block";
-			//hdis.style.display = "none";
-			//htdis.style.display = "none";
-			document.getElementById("insb1").innerHTML = cbattle1;
-			document.getElementById("insb2").innerHTML = cbattle2;
-			document.getElementById("insb3").innerHTML = cbattle3;
-			introinsblock();
-		}
-		else if(battlecard=="-1-1"){
-			insdis.style.display = "block";
-			instdis.style.display = "block";
-			//hdis.style.display = "none";
-			//htdis.style.display = "none";
-			document.getElementById("insb1").innerHTML = cbattle1;
-			document.getElementById("insb2").innerHTML = cbattle2;
-			document.getElementById("insb3").innerHTML = cbattle3;
+		if(battlecard=="-2-2"||battlecard=="-1-1"){
+			if(cb1==1){
+				document.getElementById("cbp1").style.border = "2px solid red";
+			}
+			if(cb2==1){
+				document.getElementById("cbp2").style.border = "2px solid red";
+			}
+			if(cb3==1){
+				document.getElementById("cbp3").style.border = "2px solid red";
+			}
 			introinsblock();
 		}
 		else{
-			pbdis.style.display = "block";
-			pbtdis.style.display = "block";
-			//hdis.style.display = "none";
-			//htdis.style.display = "none";
+			if(pb1==0){
+				document.getElementById("pbp1").style.border = "2px solid red";
+			}
+			if(pb2==0){
+				document.getElementById("pbp2").style.border = "2px solid red";
+			}
+			if(pb3==0){
+				document.getElementById("pbp3").style.border = "2px solid red";
+			}
 			introblock();
 		}
 	}
+	
 }
 
 //电脑判断生物
@@ -51,145 +49,159 @@ function ccre(ccard,cmana){
 	if(cm1==true){		
 		//优先避免11d
 		if(pbattle1=="1|1|d"&&cb2==0){
-			document.getElementById("cbattle2").innerHTML = ccard;
-			document.getElementById("cbattle2").style.backgroundColor="blue";
+			//document.getElementById("cbp2").innerHTML = ccard;
+			document.getElementById("cbp2").style.border="2px solid blue";
 			cbattle2=ccard;
 			cb2=1;
 			ccounterbattle();
 			getpandt();
+			battlepicture();
 			return;
 		}
 		if(pbattle1=="1|1|d"&&cb2==1&&cb3==0){
-			document.getElementById("cbattle3").innerHTML = ccard;
-			document.getElementById("cbattle3").style.backgroundColor="blue";
+			//document.getElementById("cbp3").innerHTML = ccard;
+			document.getElementById("cbp3").style.border="2px solid blue";
 			cbattle3=ccard;
 			cb3=1;
 			ccounterbattle();
 			getpandt();
+			battlepicture();
 			return;
 		}
 		if(pbattle1=="1|1|d"&&cb2==1&&cb3==1&&cb1==0){
-			document.getElementById("cbattle1").innerHTML = ccard;
-			document.getElementById("cbattle1").style.backgroundColor="blue";
-			cbattle1=ccard;
+			//document.getElementById("cbp1").innerHTML = ccard;
+			document.getElementById("cbp1").style.border="2px solid blue";
 			cb1=1;
 			ccounterbattle();
 			getpandt();
+			battlepicture();
 			return;
 		}
 		
 		if(pbattle2=="1|1|d"&&cb1==0){
-			document.getElementById("cbattle1").innerHTML = ccard;
-			document.getElementById("cbattle1").style.backgroundColor="blue";
+			//document.getElementById("cbp1").innerHTML = ccard;
+			document.getElementById("cbp1").style.border="2px solid blue";
 			cbattle1=ccard;
 			cb1=1;
 			ccounterbattle();
 			getpandt();
+			battlepicture();
 			return;
 		}
 		if(pbattle2=="1|1|d"&&cb1==1&&cb3==0){
-			document.getElementById("cbattle3").innerHTML = ccard;
-			document.getElementById("cbattle3").style.backgroundColor="blue";
+			//document.getElementById("cbp3").innerHTML = ccard;
+			document.getElementById("cbp3").style.border="2px solid blue";
 			cbattle3=ccard;
 			cb3=1;
 			ccounterbattle();
 			getpandt();
+			battlepicture();
 			return;
 		}
 		if(pbattle2=="1|1|d"&&cb1==1&&cb3==1&&cb2==0){
-			document.getElementById("cbattle2").innerHTML = ccard;
-			document.getElementById("cbattle2").style.backgroundColor="blue";
+			//document.getElementById("cbp2").innerHTML = ccard;
+			document.getElementById("cbp2").style.border="2px solid blue";
 			cbattle2=ccard;
 			cb2=1;
 			ccounterbattle();
 			getpandt();
+			battlepicture();
 			return;
 		}
 		
 		if(pbattle3=="1|1|d"&&cb1==0){
-			document.getElementById("cbattle1").innerHTML = ccard;
-			document.getElementById("cbattle1").style.backgroundColor="blue";
+			//document.getElementById("cbp1").innerHTML = ccard;
+			document.getElementById("cbp1").style.border="2px solid blue";
 			cbattle1=ccard;
 			cb1=1;
 			ccounterbattle();
 			getpandt();
+			battlepicture();
 			return;
 		}
 		if(pbattle3=="1|1|d"&&cb1==1&&cb2==0){
-			document.getElementById("cbattle2").innerHTML = ccard;
-			document.getElementById("cbattle2").style.backgroundColor="blue";
+			//document.getElementById("cbp2").innerHTML = ccard;
+			document.getElementById("cbp2").style.border="2px solid blue";
 			cbattle2=ccard;
 			cb2=1;
 			ccounterbattle();
 			getpandt();
+			battlepicture();
 			return;
 		}
 		if(pbattle3=="1|1|d"&&cb1==1&&cb2==1&&cb3==0){
-			document.getElementById("cbattle3").innerHTML = ccard;
-			document.getElementById("cbattle3").style.backgroundColor="blue";
+			//document.getElementById("cbp3").innerHTML = ccard;
+			document.getElementById("cbp3").style.border="2px solid blue";
 			cbattle3=ccard;
 			cb3=1;
 			ccounterbattle();
 			getpandt();
+			battlepicture();
 			return;
 		}
 		
 		//优先出在有对手的格子里
 		if(pb1==1&&cb1==0){
-			document.getElementById("cbattle1").innerHTML = ccard;
-			document.getElementById("cbattle1").style.backgroundColor="blue";
+			//document.getElementById("cbp1").innerHTML = ccard;
+			document.getElementById("cbp1").style.border="2px solid blue";
 			cbattle1=ccard;
 			cb1=1;
 			ccounterbattle();
 			getpandt();
+			battlepicture();
 			return;
 		}
 		
 		if(pb2==1&&cb2==0){
-			document.getElementById("cbattle2").innerHTML = ccard;
-			document.getElementById("cbattle2").style.backgroundColor="blue";
+			//document.getElementById("cbp2").innerHTML = ccard;
+			document.getElementById("cbp2").style.border="2px solid blue";
 			cbattle2=ccard;
 			cb2=1;
 			ccounterbattle();
 			getpandt();
+			battlepicture();
 			return;
 		}
 		
 		if(pb3==1&&cb3==0){
-			document.getElementById("cbattle3").innerHTML = ccard;
-			document.getElementById("cbattle3").style.backgroundColor="blue";
+			//document.getElementById("cbp3").innerHTML = ccard;
+			document.getElementById("cbp3").style.border="2px solid blue";
 			cbattle3=ccard;
 			cb3=1;
 			ccounterbattle();
 			getpandt();
+			battlepicture();
 			return;
 		}
 		
 		if(cb1==0){
-			document.getElementById("cbattle1").innerHTML = ccard;
-			document.getElementById("cbattle1").style.backgroundColor="blue";
+			//document.getElementById("cbp1").innerHTML = ccard;
+			document.getElementById("cbp1").style.border="2px solid blue";
 			cbattle1=ccard;
 			cb1=1;
 			ccounterbattle();
 			getpandt();
+			battlepicture();
 			return;
 		}
 		if(cb1==1&&cb2==0){
-			document.getElementById("cbattle2").innerHTML = ccard;
-			document.getElementById("cbattle2").style.backgroundColor="blue";
+			//document.getElementById("cbp2").innerHTML = ccard;
+			document.getElementById("cbp2").style.border="2px solid blue";
 			cbattle2=ccard;
 			cb2=1;
 			ccounterbattle();
 			getpandt();
+			battlepicture();
 			return;
 		}
 		if(cb1==1&&cb2==1&&cb3==0){
-			document.getElementById("cbattle3").innerHTML = ccard;
-			document.getElementById("cbattle3").style.backgroundColor="blue";
+			//document.getElementById("cbp3").innerHTML = ccard;
+			document.getElementById("cbp3").style.border="2px solid blue";
 			cbattle3=ccard;
 			cb3=1;
 			ccounterbattle();
 			getpandt();
+			battlepicture();
 			return;
 		}
 		
@@ -200,160 +212,175 @@ function ccre(ccard,cmana){
 			if(cm2==true){				
 				//优先避免11d
 				if(pbattle1=="1|1|d"&&cb2==0){
-					document.getElementById("cbattle2").innerHTML = oldcard[o];
-					document.getElementById("cbattle2").style.backgroundColor="blue";
+					//document.getElementById("cbp2").innerHTML = oldcard[o];
+					document.getElementById("cbp2").style.border="2px solid blue";
 					cbattle2=oldcard[o];
 					oldcard[o]="";
 					cb2=1;
 					ccounterbattle();
 					getpandt();
+					battlepicture();
 					return;
 				}
 				if(pbattle1=="1|1|d"&&cb2==1&&cb3==0){
-					document.getElementById("cbattle3").innerHTML = oldcard[o];
-					document.getElementById("cbattle3").style.backgroundColor="blue";
+					//document.getElementById("cbp3").innerHTML = oldcard[o];
+					document.getElementById("cbp3").style.border="2px solid blue";
 					cbattle3=oldcard[o];
 					oldcard[o]="";
 					cb3=1;
 					ccounterbattle();
 					getpandt();
+					battlepicture();
 					return;
 				}
 				if(pbattle1=="1|1|d"&&cb2==1&&cb3==1&&cb1==0){
-					document.getElementById("cbattle1").innerHTML = oldcard[o];
-					document.getElementById("cbattle1").style.backgroundColor="blue";
+					//document.getElementById("cbp1").innerHTML = oldcard[o];
+					document.getElementById("cbp1").style.border="2px solid blue";
 					cbattle1=oldcard[o];
 					oldcard[o]="";
 					cb1=1;
 					ccounterbattle();
 					getpandt();
+					battlepicture();
 					return;
 				}
 				
 				if(pbattle2=="1|1|d"&&cb1==0){
-					document.getElementById("cbattle1").innerHTML = oldcard[o];
-					document.getElementById("cbattle1").style.backgroundColor="blue";
+					//document.getElementById("cbp1").innerHTML = oldcard[o];
+					document.getElementById("cbp1").style.border="2px solid blue";
 					cbattle1=oldcard[o];
 					oldcard[o]="";
 					cb1=1;
 					ccounterbattle();
 					getpandt();
+					battlepicture();
 					return;
 				}
 				if(pbattle2=="1|1|d"&&cb1==1&&cb3==0){
-					document.getElementById("cbattle3").innerHTML = oldcard[o];
-					document.getElementById("cbattle3").style.backgroundColor="blue";
+					//document.getElementById("cbp3").innerHTML = oldcard[o];
+					document.getElementById("cbp3").style.border="2px solid blue";
 					cbattle3=oldcard[o];
 					oldcard[o]="";
 					cb3=1;
 					ccounterbattle();
 					getpandt();
+					battlepicture();
 					return;
 				}
 				if(pbattle2=="1|1|d"&&cb1==1&&cb3==1&&cb2==0){
-					document.getElementById("cbattle2").innerHTML = oldcard[o];
-					document.getElementById("cbattle2").style.backgroundColor="blue";
+					//document.getElementById("cbp2").innerHTML = oldcard[o];
+					document.getElementById("cbp2").style.border="2px solid blue";
 					cbattle2=oldcard[o];
 					oldcard[o]="";
 					cb2=1;
 					ccounterbattle();
 					getpandt();
+					battlepicture();
 					return;
 				}
 				
 				if(pbattle3=="1|1|d"&&cb1==0){
-					document.getElementById("cbattle1").innerHTML = oldcard[o];
-					document.getElementById("cbattle1").style.backgroundColor="blue";
+					//document.getElementById("cbp1").innerHTML = oldcard[o];
+					document.getElementById("cbp1").style.border="2px solid blue";
 					cbattle1=oldcard[o];
 					oldcard[o]="";
 					cb1=1;
 					ccounterbattle();
 					getpandt();
+					battlepicture();
 					return;
 				}
 				if(pbattle3=="1|1|d"&&cb1==1&&cb2==0){
-					document.getElementById("cbattle2").innerHTML = oldcard[o];
-					document.getElementById("cbattle2").style.backgroundColor="blue";
+					//document.getElementById("cbp2").innerHTML = oldcard[o];
+					document.getElementById("cbp2").style.border="2px solid blue";
 					cbattle2=oldcard[o];
 					oldcard[o]="";
 					cb2=1;
 					ccounterbattle();
 					getpandt();
+					battlepicture();
 					return;
 				}
 				if(pbattle3=="1|1|d"&&cb1==1&&cb2==1&&cb3==0){
-					document.getElementById("cbattle3").innerHTML = oldcard[o];
-					document.getElementById("cbattle3").style.backgroundColor="blue";
+					//document.getElementById("cbp3").innerHTML = oldcard[o];
+					document.getElementById("cbp3").style.border="2px solid blue";
 					cbattle3=oldcard[o];
 					oldcard[o]="";
 					cb3=1;
 					ccounterbattle();
 					getpandt();
+					battlepicture();
 					return;
 				}
 				
 				//优先出在有对手的格子里
 				if(pb1==1&&cb1==0){
-					document.getElementById("cbattle1").innerHTML = oldcard[o];
-					document.getElementById("cbattle1").style.backgroundColor="blue";
+					//document.getElementById("cbp1").innerHTML = oldcard[o];
+					document.getElementById("cbp1").style.border="2px solid blue";
 					cbattle1=oldcard[o];
 					oldcard[o]="";
 					cb1=1;
 					ccounterbattle();
 					getpandt();
+					battlepicture();
 					return;
 				}
 				
 				if(pb2==1&&cb2==0){
-					document.getElementById("cbattle2").innerHTML = oldcard[o];
-					document.getElementById("cbattle2").style.backgroundColor="blue";
+					//document.getElementById("cbp2").innerHTML = oldcard[o];
+					document.getElementById("cbp2").style.border="2px solid blue";
 					cbattle2=oldcard[o];
 					oldcard[o]="";
 					cb2=1;
 					ccounterbattle();
 					getpandt();
+					battlepicture();
 					return;
 				}
 				
 				if(pb3==1&&cb3==0){
-					document.getElementById("cbattle3").innerHTML = oldcard[o];
-					document.getElementById("cbattle3").style.backgroundColor="blue";
+					//document.getElementById("cbp3").innerHTML = oldcard[o];
+					document.getElementById("cbp3").style.border="2px solid blue";
 					cbattle3=oldcard[o];
 					oldcard[o]="";
 					cb3=1;
 					ccounterbattle();
 					getpandt();
+					battlepicture();
 					return;
 				}
 				
 				if(cb1==0){
-					document.getElementById("cbattle1").innerHTML = oldcard[o];
-					document.getElementById("cbattle1").style.backgroundColor="blue";
+					//document.getElementById("cbp1").innerHTML = oldcard[o];
+					document.getElementById("cbp1").style.border="2px solid blue";
 					cbattle1=oldcard[o];
 					oldcard[o]="";
 					cb1=1;
 					ccounterbattle();
 					getpandt();
+					battlepicture();
 					return;
 				}
 				if(cb1==1&&cb2==0){
-					document.getElementById("cbattle2").innerHTML = oldcard[o];
-					document.getElementById("cbattle2").style.backgroundColor="blue";
+					//document.getElementById("cbp2").innerHTML = oldcard[o];
+					document.getElementById("cbp2").style.border="2px solid blue";
 					cbattle2=oldcard[o];
 					oldcard[o]="";
 					cb2=1;
 					ccounterbattle();
 					getpandt();
+					battlepicture();
 					return;
 				}
 				if(cb1==1&&cb2==1&&cb3==0){
-					document.getElementById("cbattle3").innerHTML = oldcard[o];
-					document.getElementById("cbattle3").style.backgroundColor="blue";
+					//document.getElementById("cbp3").innerHTML = oldcard[o];
+					document.getElementById("cbp3").style.border="2px solid blue";
 					cbattle3=oldcard[o];
 					oldcard[o]="";
 					cb3=1;
 					ccounterbattle();
 					getpandt();
+					battlepicture();
 					return;
 				}
 			}
