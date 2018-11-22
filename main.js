@@ -148,6 +148,7 @@ var pa1;
 var pa2;
 var pa3;
 function main4(){
+	introselect();
 	document.getElementById("button4").style.display = "none";
 	document.getElementById("button2").style.display = "block";
 	if(pb1==1){
