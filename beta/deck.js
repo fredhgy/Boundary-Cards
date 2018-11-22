@@ -171,6 +171,52 @@ function decmana(){
 var carddis;
 function deckdisplay(){
 	carddis = [0,0,0,0,0,0,0,0,0,0,0,0];
+	for(var decs=0;decs<=11;decs++){
+		if(cardtot[decs]==1){
+			carddis[decs]="mana";
+		}
+		if(cardtot[decs]==2){
+			carddis[decs]="mana";
+		}
+		if(cardtot[decs]==3){
+			carddis[decs]="mana";
+		}
+		if(cardtot[decs]==4){
+			carddis[decs]="mana";
+		}
+		if(cardtot[decs]==5){
+			carddis[decs]="mana";
+		}
+		if(cardtot[decs]==6){
+			carddis[decs]="1|1|d";
+		}
+		if(cardtot[decs]==7){
+			carddis[decs]="1|1";
+		}
+		if(cardtot[decs]==8){
+			carddis[decs]="2|2";
+		}
+		if(cardtot[decs]==9){
+			carddis[decs]="3|3";
+		}
+		if(cardtot[decs]==10){
+			carddis[decs]="4|4";
+		}
+		if(cardtot[decs]==11){
+			carddis[decs]="-2-2";
+		}
+		if(cardtot[decs]==12){
+			carddis[decs]="-1-1";
+		}
+		if(cardtot[decs]==0){
+			carddis[decs]="null";
+		}
+		
+	}
+	document.getElementById("deckdis").innerHTML = carddis;
+}
+
+function decksaved(){
 	cardtot[0]=getCookie("cardtot0");
 	cardtot[1]=getCookie("cardtot1");
 	cardtot[2]=getCookie("cardtot2");
@@ -183,6 +229,7 @@ function deckdisplay(){
 	cardtot[9]=getCookie("cardtot9");
 	cardtot[10]=getCookie("cardtot10");
 	cardtot[11]=getCookie("cardtot11");
+	carddis = [0,0,0,0,0,0,0,0,0,0,0,0];
 	for(var decs=0;decs<=11;decs++){
 		if(cardtot[decs]==1){
 			carddis[decs]="mana";
