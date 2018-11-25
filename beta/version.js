@@ -1,6 +1,9 @@
 function version(){
-	var version= "25.11.18.2020";
+	var version= "25.11.18.2225";
 	document.getElementById("version").innerHTML = version;
+	mode=getCookie("mode");
+	deckbalance=getCookie("deckbalance");
+	document.getElementById("deckbalance").innerHTML = deckbalance;
 }
 
 function andversion(){

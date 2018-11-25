@@ -25,3 +25,7 @@ function introcc(){
 function introselect(){
 	document.getElementById("intro").innerHTML = "进攻选择回合，你可以在该回合选择生物是否进行攻击，勾选表示本回合攻击，取消勾选表示本回合不攻击";
 }
+
+function introdeck(){
+	document.getElementById("intro").innerHTML = "套牌构筑界面，你可以选择构筑模式：“构筑”模式可以自建套牌，点击需要的卡进行构筑；“现开”模式需要使用金币购买卡包，然后打开卡包，每包3张卡牌，利用开包得到的卡牌进行构筑。该模式的金币可通过赢得比赛获得，现开模式下赢得比赛奖励5金币，构筑模式下为1金币。另外，在现开模式下输掉比赛会损失1金币";
+}

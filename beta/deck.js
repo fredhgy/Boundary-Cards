@@ -1,4 +1,5 @@
-function deck(){
+function deckstart(){
+	introdeck();
 	chdis.style.display = "none";
 	chtdis.style.display = "none";
 	pb.style.display = "none";
@@ -6,6 +7,15 @@ function deck(){
 	document.getElementById("status").style.display="none";
 	document.getElementById("cstatus").style.display="none";
 	document.getElementById("start").style.display="none";
+	
+	document.getElementById("deckoption").style.display="block";
+}
+
+function deck(){
+	introdeck();
+	mode=0;
+	setCookie("mode",mode,30);
+	document.getElementById("gamemode").innerHTML = "构筑模式";
 	document.getElementById("decksel1").style.display="block";
 	document.getElementById("decksel2").style.display="block";
 	document.getElementById("decksure").style.display="block";
@@ -13,9 +23,11 @@ function deck(){
 	document.getElementById("deckdel").style.display="block";
 	document.getElementById("deckback").style.display="block";
 	document.getElementById("deckdisplay").style.display="block";
-	document.getElementById("deckoption").style.display="block";
-	document.getElementById("gamediffcult").style.display="none";
 	document.getElementById("deck").style.display="none";
+	
+	document.getElementById("decklimit").style.display="none";
+	document.getElementById("deckbought").style.display="none";
+	document.getElementById("deckopenradio").style.display="none";
 	//status.style.display = "none";
 	//cstatus.style.display = "none";
 }
@@ -36,12 +48,12 @@ function deckback(){
 	document.getElementById("deckback").style.display="none";
 	document.getElementById("deckdisplay").style.display="none";
 	document.getElementById("deckoption").style.display="none";
-	document.getElementById("gamediffcult").style.display="block";
 	document.getElementById("deck").style.display="block";
 	
 	document.getElementById("decklimit").style.display="none";
 	document.getElementById("deckbought").style.display="none";
 	document.getElementById("deckopenradio").style.display="none";
+	introstart();
 }
 
 
@@ -62,12 +74,12 @@ function decksure(){
 	document.getElementById("deckback").style.display="none";
 	document.getElementById("deckdisplay").style.display="none";
 	document.getElementById("deckoption").style.display="none";
-	document.getElementById("gamediffcult").style.display="block";
 	document.getElementById("deck").style.display="block";
 	
 	document.getElementById("decklimit").style.display="none";
 	document.getElementById("deckbought").style.display="none";
 	document.getElementById("deckopenradio").style.display="none";
+	introstart();
 	
 	setCookie("cardtot0",cardtot[0],1);
 	setCookie("cardtot1",cardtot[1],1);
@@ -86,21 +98,46 @@ function decksure(){
 }
 
 function deckdel(){
-	
-	delCookie("cardtot0");
-	delCookie("cardtot1");
-	delCookie("cardtot2");
-	delCookie("cardtot3");
-	delCookie("cardtot4");
-	delCookie("cardtot5");
-	delCookie("cardtot6");
-	delCookie("cardtot7");
-	delCookie("cardtot8");
-	delCookie("cardtot9");
-	delCookie("cardtot10");
-	delCookie("cardtot11");
-	cardtot = [0,0,0,0,0,0,0,0,0,0,0,0];
-	deckdisplay();
+	if(mode==1){
+		var r=confirm("确定删除现开模式套牌？")
+		if (r==true)
+		{
+			delCookie("cardtot0");
+			delCookie("cardtot1");
+			delCookie("cardtot2");
+			delCookie("cardtot3");
+			delCookie("cardtot4");
+			delCookie("cardtot5");
+			delCookie("cardtot6");
+			delCookie("cardtot7");
+			delCookie("cardtot8");
+			delCookie("cardtot9");
+			delCookie("cardtot10");
+			delCookie("cardtot11");
+			cardtot = [0,0,0,0,0,0,0,0,0,0,0,0];
+			deckdisplay();
+		}
+		else
+		{
+			return;
+		}
+	}
+	else{
+		delCookie("cardtot0");
+		delCookie("cardtot1");
+		delCookie("cardtot2");
+		delCookie("cardtot3");
+		delCookie("cardtot4");
+		delCookie("cardtot5");
+		delCookie("cardtot6");
+		delCookie("cardtot7");
+		delCookie("cardtot8");
+		delCookie("cardtot9");
+		delCookie("cardtot10");
+		delCookie("cardtot11");
+		cardtot = [0,0,0,0,0,0,0,0,0,0,0,0];
+		deckdisplay();
+	}
 }
 
 var cardtot = [0,0,0,0,0,0,0,0,0,0,0,0];

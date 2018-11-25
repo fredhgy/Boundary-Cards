@@ -1,4 +1,8 @@
+var mode=0;
 function limit(){
+	mode=1;
+	setCookie("mode",mode,30);
+	document.getElementById("gamemode").innerHTML = "现开模式";
 	chdis.style.display = "none";
 	chtdis.style.display = "none";
 	pb.style.display = "none";
@@ -7,8 +11,13 @@ function limit(){
 	document.getElementById("cstatus").style.display="none";
 	document.getElementById("start").style.display="none";
 	document.getElementById("deckoption").style.display="block";
-	document.getElementById("gamediffcult").style.display="none";
 	document.getElementById("deck").style.display="none";
+	
+	document.getElementById("decksure").style.display="block";
+	document.getElementById("deckdis").style.display="block";
+	document.getElementById("deckdel").style.display="block";
+	document.getElementById("deckback").style.display="block";
+	document.getElementById("deckdisplay").style.display="block";
 	
 	document.getElementById("decksel1").style.display="none";
 	document.getElementById("decksel2").style.display="none";
@@ -36,6 +45,7 @@ function deckopen(){
 			deckopenning[i]=deckopened[ii];
 		}
 		decknum--;
+		setCookie("decknum",decknum,30);
 		//document.getElementById("deckopendis").innerHTML = deckopenning;
 		document.getElementById("deckopen1").innerHTML = deckopenning[0];
 		document.getElementById("deckopen2").innerHTML = deckopenning[1];
@@ -52,18 +62,28 @@ function deckbuy(){
 	}
 	deckbalance--;
 	decknum++;
-	setCookie("deckbalance",deckbalance,1);
-	setCookie("decknum",decknum,1);
+	setCookie("deckbalance",deckbalance,30);
+	setCookie("decknum",decknum,30);
 	document.getElementById("deckbalance").innerHTML = "余额："+deckbalance;
 	document.getElementById("decknumber").innerHTML = "卡包数："+decknum;
 }
 
 function deckpay(){
 	deckbalance++;
-	setCookie("deckbalance",deckbalance,1);
+	setCookie("deckbalance",deckbalance,30);
 	document.getElementById("deckbalance").innerHTML = "余额："+deckbalance;
 	document.getElementById("decknumber").innerHTML = "卡包数："+decknum;
 }
+
+function deckdefault(){
+	deckbalance=5;
+	decknum=0;
+	delCookie("deckbalance");
+	delCookie("decknumber");
+	document.getElementById("deckbalance").innerHTML = "余额："+deckbalance;
+	document.getElementById("decknumber").innerHTML = "卡包数："+decknum;
+}
+
 
 function deckopen1(){
 	if(deckopenning[0]=="mana"){
