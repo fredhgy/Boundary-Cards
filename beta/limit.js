@@ -40,6 +40,10 @@ function deckopen(){
 		alert("无卡包，请购买");
 	}
 	else{
+		if(cardtot[0]!=0){
+			alert("请删除原套牌后再添加");
+			return;
+		}
 		for(var i=0;i<3;i++){
 			var ii=Math.floor((Math.random()*deckopened.length));
 			deckopenning[i]=deckopened[ii];
