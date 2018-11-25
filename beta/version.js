@@ -1,5 +1,5 @@
 function version(){
-	var version= "22.11.18.1358";
+	var version= "25.11.18.2020";
 	document.getElementById("version").innerHTML = version;
 }
 

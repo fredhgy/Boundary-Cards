@@ -6,12 +6,16 @@ function deck(){
 	document.getElementById("status").style.display="none";
 	document.getElementById("cstatus").style.display="none";
 	document.getElementById("start").style.display="none";
-	document.getElementById("decksel").style.display="block";
+	document.getElementById("decksel1").style.display="block";
+	document.getElementById("decksel2").style.display="block";
 	document.getElementById("decksure").style.display="block";
 	document.getElementById("deckdis").style.display="block";
 	document.getElementById("deckdel").style.display="block";
 	document.getElementById("deckback").style.display="block";
 	document.getElementById("deckdisplay").style.display="block";
+	document.getElementById("deckoption").style.display="block";
+	document.getElementById("gamediffcult").style.display="none";
+	document.getElementById("deck").style.display="none";
 	//status.style.display = "none";
 	//cstatus.style.display = "none";
 }
@@ -24,12 +28,20 @@ function deckback(){
 	document.getElementById("status").style.display="block";
 	document.getElementById("cstatus").style.display="block";
 	document.getElementById("start").style.display="block";
-	document.getElementById("decksel").style.display="none";
+	document.getElementById("decksel1").style.display="none";
+	document.getElementById("decksel2").style.display="none";
 	document.getElementById("decksure").style.display="none";
 	document.getElementById("deckdis").style.display="none";
 	document.getElementById("deckdel").style.display="none";
 	document.getElementById("deckback").style.display="none";
 	document.getElementById("deckdisplay").style.display="none";
+	document.getElementById("deckoption").style.display="none";
+	document.getElementById("gamediffcult").style.display="block";
+	document.getElementById("deck").style.display="block";
+	
+	document.getElementById("decklimit").style.display="none";
+	document.getElementById("deckbought").style.display="none";
+	document.getElementById("deckopenradio").style.display="none";
 }
 
 
@@ -42,12 +54,21 @@ function decksure(){
 	document.getElementById("status").style.display="block";
 	document.getElementById("cstatus").style.display="block";
 	document.getElementById("start").style.display="block";
-	document.getElementById("decksel").style.display="none";
+	document.getElementById("decksel1").style.display="none";
+	document.getElementById("decksel2").style.display="none";
 	document.getElementById("decksure").style.display="none";
 	document.getElementById("deckdis").style.display="none";
 	document.getElementById("deckdel").style.display="none";
 	document.getElementById("deckback").style.display="none";
 	document.getElementById("deckdisplay").style.display="none";
+	document.getElementById("deckoption").style.display="none";
+	document.getElementById("gamediffcult").style.display="block";
+	document.getElementById("deck").style.display="block";
+	
+	document.getElementById("decklimit").style.display="none";
+	document.getElementById("deckbought").style.display="none";
+	document.getElementById("deckopenradio").style.display="none";
+	
 	setCookie("cardtot0",cardtot[0],1);
 	setCookie("cardtot1",cardtot[1],1);
 	setCookie("cardtot2",cardtot[2],1);

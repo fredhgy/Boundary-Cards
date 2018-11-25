@@ -4,23 +4,23 @@ function cardpicture(){
 		//document.getElementById("phand1").innerHTML = "法术力";
 	}
 	else if(card1=="1|1|d"){
-		document.getElementById("ph1").src = "11d.gif";
+		document.getElementById("ph1").src = "11dh.gif";
 		//document.getElementById("phand1").innerHTML = "法术力";
 	}
 	else if(card1=="1|1"){
-		document.getElementById("ph1").src = "11.gif";
+		document.getElementById("ph1").src = "11h.gif";
 		//document.getElementById("phand1").innerHTML = "法术力";
 	}
 	else if(card1=="2|2"){
-		document.getElementById("ph1").src = "22.gif";
+		document.getElementById("ph1").src = "22h.gif";
 		//document.getElementById("phand1").innerHTML = "法术力";
 	}
 	else if(card1=="3|3"){
-		document.getElementById("ph1").src = "33.gif";
+		document.getElementById("ph1").src = "33h.gif";
 		//document.getElementById("phand1").innerHTML = "法术力";
 	}
 	else if(card1=="4|4"){
-		document.getElementById("ph1").src = "44.gif";
+		document.getElementById("ph1").src = "44h.gif";
 		//document.getElementById("phand1").innerHTML = "法术力";
 	}
 	else if(card1=="-2-2"){
@@ -41,23 +41,23 @@ function cardpicture(){
 		//document.getElementById("phand2").innerHTML = "法术力";
 	}
 	else if(card2=="1|1|d"){
-		document.getElementById("ph2").src = "11d.gif";
+		document.getElementById("ph2").src = "11dh.gif";
 		//document.getElementById("phand2").innerHTML = "法术力";
 	}
 	else if(card2=="1|1"){
-		document.getElementById("ph2").src = "11.gif";
+		document.getElementById("ph2").src = "11h.gif";
 		//document.getElementById("phand2").innerHTML = "法术力";
 	}
 	else if(card2=="2|2"){
-		document.getElementById("ph2").src = "22.gif";
+		document.getElementById("ph2").src = "22h.gif";
 		//document.getElementById("phand2").innerHTML = "法术力";
 	}
 	else if(card2=="3|3"){
-		document.getElementById("ph2").src = "33.gif";
+		document.getElementById("ph2").src = "33h.gif";
 		//document.getElementById("phand2").innerHTML = "法术力";
 	}
 	else if(card2=="4|4"){
-		document.getElementById("ph2").src = "44.gif";
+		document.getElementById("ph2").src = "44h.gif";
 		//document.getElementById("phand2").innerHTML = "法术力";
 	}
 	else if(card2=="-2-2"){
@@ -78,23 +78,23 @@ function cardpicture(){
 		//document.getElementById("phand3").innerHTML = "法术力";
 	}
 	else if(card3=="1|1|d"){
-		document.getElementById("ph3").src = "11d.gif";
+		document.getElementById("ph3").src = "11dh.gif";
 		//document.getElementById("phand3").innerHTML = "法术力";
 	}
 	else if(card3=="1|1"){
-		document.getElementById("ph3").src = "11.gif";
+		document.getElementById("ph3").src = "11h.gif";
 		//document.getElementById("phand2").innerHTML = "法术力";
 	}
 	else if(card3=="2|2"){
-		document.getElementById("ph3").src = "22.gif";
+		document.getElementById("ph3").src = "22h.gif";
 		//document.getElementById("phand2").innerHTML = "法术力";
 	}
 	else if(card3=="3|3"){
-		document.getElementById("ph3").src = "33.gif";
+		document.getElementById("ph3").src = "33h.gif";
 		//document.getElementById("phand2").innerHTML = "法术力";
 	}
 	else if(card3=="4|4"){
-		document.getElementById("ph3").src = "44.gif";
+		document.getElementById("ph3").src = "44h.gif";
 		//document.getElementById("phand2").innerHTML = "法术力";
 	}
 	else if(card3=="-2-2"){
@@ -115,23 +115,23 @@ function cardpicture(){
 		//document.getElementById("phand4").innerHTML = "法术力";
 	}
 	else if(card4=="1|1|d"){
-		document.getElementById("ph4").src = "11d.gif";
+		document.getElementById("ph4").src = "11dh.gif";
 		//document.getElementById("phand4").innerHTML = "法术力";
 	}
 	else if(card4=="1|1"){
-		document.getElementById("ph4").src = "11.gif";
+		document.getElementById("ph4").src = "11h.gif";
 		//document.getElementById("phand4").innerHTML = "法术力";
 	}
 	else if(card4=="2|2"){
-		document.getElementById("ph4").src = "22.gif";
+		document.getElementById("ph4").src = "22h.gif";
 		//document.getElementById("phand4").innerHTML = "法术力";
 	}
 	else if(card4=="3|3"){
-		document.getElementById("ph4").src = "33.gif";
+		document.getElementById("ph4").src = "33h.gif";
 		//document.getElementById("phand4").innerHTML = "法术力";
 	}
 	else if(card4=="4|4"){
-		document.getElementById("ph4").src = "44.gif";
+		document.getElementById("ph4").src = "44h.gif";
 		//document.getElementById("phand4").innerHTML = "法术力";
 	}
 	else if(card4=="-2-2"){
@@ -152,23 +152,23 @@ function cardpicture(){
 		//document.getElementById("phand5").innerHTML = "法术力";
 	}
 	else if(card5=="1|1|d"){
-		document.getElementById("ph5").src = "11d.gif";
+		document.getElementById("ph5").src = "11dh.gif";
 		//document.getElementById("phand5").innerHTML = "法术力";
 	}
 	else if(card5=="1|1"){
-		document.getElementById("ph5").src = "11.gif";
+		document.getElementById("ph5").src = "11h.gif";
 		//document.getElementById("phand5").innerHTML = "法术力";
 	}
 	else if(card5=="2|2"){
-		document.getElementById("ph5").src = "22.gif";
+		document.getElementById("ph5").src = "22h.gif";
 		//document.getElementById("phand5").innerHTML = "法术力";
 	}
 	else if(card5=="3|3"){
-		document.getElementById("ph5").src = "33.gif";
+		document.getElementById("ph5").src = "33h.gif";
 		//document.getElementById("phand5").innerHTML = "法术力";
 	}
 	else if(card5=="4|4"){
-		document.getElementById("ph5").src = "44.gif";
+		document.getElementById("ph5").src = "44h.gif";
 		//document.getElementById("phand5").innerHTML = "法术力";
 	}
 	else if(card5=="-2-2"){
