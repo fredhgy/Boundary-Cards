@@ -65,19 +65,24 @@
 <div id="header" style="background-color:red">
 <h1 style="margin-bottom:0;">Boundary Cards</h1>version:<text id="version"></text></div>
 
-<div id="menu" style="background-color:#EEEEEE;height:auto;width:30%;float:left;">
-难度:<td><input name="diffcult" type="radio" onclick="diffcult(1)">普通</td>
-<td><input name="diffcult" type="radio" onclick="diffcult(2)">更高</td>
+<div id="menu" style="background-color:#EEEEEE;height:100%;width:25%;float:left;">
+<text id="deckbalance"></text>
+<table id="deckoption" style="display:none">
+<td><input name="diffcult" type="radio" onclick="deck()">构筑</td>
+<td><input name="diffcult" type="radio" onclick="limit()">现开</td>
+</table>
+
 <br>
-<input type="button" id="deck" value="套牌选择" onclick="deck()">
+<input type="button" id="deck" value="套牌及游戏模式选择" onclick="deckstart()">
 <br>
 <b>说明</b>
 <p id="intro">欢迎体验，本游戏仍在持续更新中，如果出现错误敬请谅解。<br>反馈：<a href="mailto:me@heguangyu.net">me@heguangyu.net</a></p>
 </div>
 
-<div id="content" style="background-color:white;height:100%;width:70%;float:left;">
+<div id="content" style="background-color:white;height:100%;width:75%;float:left;">
 <br>
-<table id="decksel" style="display:none">
+游戏模式：<text id="gamemode"></text>
+<table id="decksel1" style="display:none">
 <td><input name="deck" type="radio" onclick="yiyid()">1|1|d</td>
 <td><input name="deck" type="radio" onclick="yiyi()">1|1</td>
 <td><input name="deck" type="radio" onclick="erer()">2|2</td>
@@ -85,20 +90,39 @@
 <td><input name="deck" type="radio" onclick="sisi()">4|4</td>
 <td><input name="deck" type="radio" onclick="jianer()">-2-2</td>
 <td><input name="deck" type="radio" onclick="jianyi()">-1-1</td>
+</table>
+<table id="decksel2" style="display:none">
 <td><input name="deck" type="radio" onclick="decmana()">mana</td>
 <td><input name="deck" type="radio" onclick="defaultdeck()">默认套牌</td>
 </table>
 <p id="deckdis" style="display:none;width:auto"></p>
 <br>
 
-<input type="button" style="display:none;" id="decksure" value="确定" onclick="decksure()">
+<table id="deckbought" style="display:none">
+<td><text id="decknumber" ></text></td>
+</table>
 
-<input type="button" style="display:none;" id="deckdel" value="删除" onclick="deckdel()">
+<table id="deckopenradio" style="display:none;">
+<td><input name="deckopen" type="radio"  onclick="deckopen1()"><text id="deckopen1"></text></td>
+<td><input name="deckopen" type="radio"  onclick="deckopen2()"><text id="deckopen2"></text></td>
+<td><input name="deckopen" type="radio"  onclick="deckopen3()"><text id="deckopen3"></text></td>
+</table>
 
-<input type="button" style="display:none;" id="deckdisplay" value="显示当前存储套牌" onclick="decksaved()">
+<table id="decklimit" style="display:none">
+<td><input type="button" id="deckopen" value="打开卡包" onclick="deckopen()"></td>
+<td><input type="button" id="deckbuy" value="购买卡包" onclick="deckbuy()"></td>
+<td><input type="button" id="deckpay" value="重置现开模式（测试用）" onclick="deckdefault()"></td>
+</table>
 
-<input type="button" style="display:none;" id="deckback" value="返回" onclick="deckback()">
 
+
+</table>
+<table id="deckbutton">
+<td><input type="button" style="display:none;" id="decksure" value="确定" onclick="decksure()"></td>
+<td><input type="button" style="display:none;" id="deckdel" value="删除" onclick="deckdel()"></td>
+<td><input type="button" style="display:none;" id="deckdisplay" value="显示当前存储套牌" onclick="decksaved()"></td>
+<td><input type="button" style="display:none;" id="deckback" value="返回" onclick="deckback()"></td>
+</table>
 
 <table id="cstatus" style="width:auto">
 <tbody ><tr>
@@ -111,8 +135,8 @@
 </tr>
 </tbody></table>
 
-<p id="chdis" style="display:block;width:auto"><b>电脑手牌：</b></p>
-<table id="chtdis" style="display:block;width:auto">
+<p id="chdis" style="display:none;width:auto"><b>电脑手牌：</b></p>
+<table id="chtdis" style="display:none;width:auto">
 <tbody><tr>
 <td><p id="chand1">null</p></td>
 <td><p id="chand2">null</p></td>
@@ -149,13 +173,13 @@
 </tbody></table>
 
 <p id="hdis" style="display:none;width:auto"><b>手牌：</b></p>
-<table id="htdis" style="display:none;width:auto" border="1">
+<table id="htdis" style="display:none;width:auto">
 <tbody><tr>
-<td><img id="ph1" src="null.gif" onclick="pcre1()"><p id="phand1">null</p></td>
-<td><img id="ph2" src="null.gif" onclick="pcre2()"><p id="phand2">null</p></td>
-<td><img id="ph3" src="null.gif" onclick="pcre3()"><p id="phand3">null</p></td>
-<td><img id="ph4" src="null.gif" onclick="pcre4()"><p id="phand4">null</p></td>
-<td><img id="ph5" src="null.gif" onclick="pcre5()"><p id="phand5">null</p></td>
+<td><img id="ph1" src="null.gif" onclick="pcre1()"><p style="display:none" id="phand1">null</p></td>
+<td><img id="ph2" src="null.gif" onclick="pcre2()"><p style="display:none" id="phand2">null</p></td>
+<td><img id="ph3" src="null.gif" onclick="pcre3()"><p style="display:none" id="phand3">null</p></td>
+<td><img id="ph4" src="null.gif" onclick="pcre4()"><p style="display:none" id="phand4">null</p></td>
+<td><img id="ph5" src="null.gif" onclick="pcre5()"><p style="display:none" id="phand5">null</p></td>
 </tr>
 </tbody></table>
 
@@ -169,9 +193,10 @@
 </div>
 
 <div id="footer" style="background-color:#FFA500;clear:both;text-align:right;">
+<!--<a href="http://game.heguangyu.net">正式版</a>-->
 <a href="http://game.heguangyu.net/beta">测试版</a>
 <a href="http://www.heguangyu.net" target="_blank">© heguangyu.net</a>
-<a href="http://game.heguangyu.net/Boundarycards.apk" download="Boundarycards.apk">安卓版下载</a> 
+<a href="http://game.heguangyu.net/Boundarycards.apk" download="Boundarycards.apk">安卓版下载</a>
 </div>
 </div>
 
@@ -190,6 +215,7 @@
 <script src="intro.js"></script>
 <script src="deck.js"></script>
 <script src="cardpicture.js"></script>
+<script src="limit.js"></script>
 
 <script> 
 var mana=0;
@@ -202,16 +228,11 @@ document.getElementById("clife").innerHTML = clife;
 document.getElementById("mana").innerHTML = mana;
 document.getElementById("cmana").innerHTML = cmana;
 
-var a;
-function diffcult(a){
-	if(a==1){
-		chdis.style.display = "block";
-		chtdis.style.display = "block";
-	}
-	if(a==2){
-		chdis.style.display = "none";
-		chtdis.style.display = "none";
-	}
+if(mode==1){
+	document.getElementById("gamemode").innerHTML = "现开模式";
+}
+if(mode==0){
+	document.getElementById("gamemode").innerHTML = "构筑模式";
 }
 
 //网页版Android无联动

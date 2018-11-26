@@ -16,15 +16,20 @@ function start(){
 		cardtot[10]=getCookie("cardtot10");
 		cardtot[11]=getCookie("cardtot11");
 	}
-	if(cardtot[0]==""){
-		alert("无已存储套牌，以默认套牌开始:" );
-		cardtot = [1,2,3,4,5,6,7,8,9,10,11,12];
+	if(mode==1&&cardtot[0]==""){
+		alert("在现开模式下，无套牌无法开始游戏" );
+		return;
 	}
 	else{
-		deckdisplay();
-		alert("已存储套牌:" + carddis);
+		if(cardtot[0]==""){
+			alert("无已存储套牌，以默认套牌开始:" );
+			cardtot = [1,2,3,4,5,6,7,8,9,10,11,12];
+		}
+		else{
+			deckdisplay();
+			alert("已存储套牌:" + carddis);
+		}
 	}
-	
 	document.getElementById("hdis").style.display = "block";
 	document.getElementById("htdis").style.display = "block";
 	document.getElementById("hdis").style.backgroundColor="green";
@@ -177,8 +182,15 @@ function dead(){
 	document.getElementById("clife").innerHTML = clife;
 	document.getElementById("life").innerHTML = life;
 	if(life<=0){
-
-		alert("你输了");
+		
+		if(mode==1){
+			alert("你输了！损失1金币");
+			deckbalance=deckbalance-1;
+		}
+		if(mode==0){
+			alert("你输了！");
+		}
+		setCookie("deckbalance",deckbalance,30);
 		deadand();
 		//location.reload();
 		document.getElementById("restart").style.display = "block";
@@ -187,8 +199,15 @@ function dead(){
 		document.getElementById("button3").style.display = "none";
 	}
 	else if(clife<=0){
-
-		alert("你赢了");
+		if(mode==1){
+			alert("你赢了！获得5金币");
+			deckbalance=deckbalance+5;
+		}
+		if(mode==0){
+			alert("你赢了！获得1金币");
+			deckbalance++;
+		}
+		setCookie("deckbalance",deckbalance,30);
 		deadand();
 		//location.reload();
 		document.getElementById("restart").style.display = "block";
