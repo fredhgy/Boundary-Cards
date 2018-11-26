@@ -40,7 +40,7 @@ function deckopen(){
 		alert("无卡包，请购买");
 	}
 	else{
-		if(cardtot[0]!=0){
+		if(cardtot[11]!=0){
 			alert("请删除原套牌后再添加");
 			return;
 		}
