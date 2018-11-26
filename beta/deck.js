@@ -12,6 +12,30 @@ function deckstart(){
 }
 
 function deck(){
+	if(mode==1){
+		var r=confirm("切换游戏模式将删除原模式下套牌！")
+		if (r==true)
+		{
+			delCookie("cardtot0");
+			delCookie("cardtot1");
+			delCookie("cardtot2");
+			delCookie("cardtot3");
+			delCookie("cardtot4");
+			delCookie("cardtot5");
+			delCookie("cardtot6");
+			delCookie("cardtot7");
+			delCookie("cardtot8");
+			delCookie("cardtot9");
+			delCookie("cardtot10");
+			delCookie("cardtot11");
+			cardtot = [0,0,0,0,0,0,0,0,0,0,0,0];
+			deckdisplay();
+		}
+		else
+		{
+			return;
+		}
+	}
 	introdeck();
 	mode=0;
 	setCookie("mode",mode,30);
