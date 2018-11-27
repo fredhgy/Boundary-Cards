@@ -23,11 +23,11 @@ function start(){
 	else{
 		if(cardtot[0]==""){
 			alert("无已存储套牌，以默认套牌开始:" );
-			cardtot = [1,2,3,4,5,6,7,8,9,10,11,12];
+			defaultdeck();
 		}
 		else{
 			deckdisplay();
-			alert("使用的套牌:" + carddis);
+			alert("使用的套牌:" + cardtot);
 		}
 	}
 	document.getElementById("hdis").style.display = "block";
@@ -38,6 +38,12 @@ function start(){
 
 	document.getElementById("mana").innerHTML = mana;
 	document.getElementById("cmana").innerHTML = cmana;
+	
+	pb.style.display = "block";
+	pbt.style.display = "block";
+	document.getElementById("status").style.display="block";
+	document.getElementById("cstatus").style.display="block";
+	document.getElementById("start").style.display="block";
 
 	document.getElementById("button2").style.display = "block";
 	document.getElementById("start").style.display = "none";

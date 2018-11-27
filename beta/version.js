@@ -1,5 +1,5 @@
 function version(){
-	var version= "27.11.18.1933";
+	var version= "27.11.18.2230";
 	document.getElementById("version").innerHTML = version;
 	mode=getCookie("mode");
 	decksaved();

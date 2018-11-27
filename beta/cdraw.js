@@ -1,6 +1,7 @@
 var cd;
 var ccard,ccard1,ccard2,ccard3,ccard4,ccard5;
-var ccardtot= [1,2,3,4,5,6,7,8,9,10,11,12];
+//var ccardtot= [1,2,3,4,5,6,7,8,9,10,11,12];
+var ccardtot= ["mana","mana","mana","mana","mana","1|1|d","1|1","2|2","3|3","4|4","2|2","1|1"];
 var cz,czz;
 czz=0;
 function ccardf(){
@@ -15,9 +16,13 @@ function ccardf(){
 		if(cd!=0){
 			cz=false;
 			czz++;
+			ccardtot[cdn]=0;
 		}		
-	}		
-	if(cd<=5){
+	}
+	ccard=cd;
+	
+		
+	/* if(cd<=5){
 		ccard="mana";
 		for(var cdd=0;cdd<5;cdd++){
 			if(ccardtot[cdd]==cd){
@@ -52,6 +57,6 @@ function ccardf(){
 	if(cd==12){
 		ccard="1|1";
 		ccardtot[11]=0;
-	}
+	} */
 	return ccard;
 }

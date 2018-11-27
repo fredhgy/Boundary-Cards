@@ -15,9 +15,12 @@ function pcard(){
 		if(d!=0){
 			z=false;
 			zz++;
+			cardtot[dn]=0;
 		}		
 	}
-	if(d<=5){
+	card=d;
+	
+	/* if(d<=5){
 		card="mana";
 		for(var dd=0;dd<5;dd++){
 			if(cardtot[dd]==d){
@@ -53,6 +56,6 @@ function pcard(){
 	if(d==12){
 		card="-1-1";
 		cardtot[dn]=0;
-	}
+	} */
 	return card;
 }
