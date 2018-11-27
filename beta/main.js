@@ -201,7 +201,8 @@ function dead(){
 	else if(clife<=0){
 		if(mode==1){
 			alert("你赢了！获得5金币");
-			deckbalance=deckbalance+5;
+			deckbalance++;
+			deckbalance=deckbalance+4;
 		}
 		if(mode==0){
 			alert("你赢了！获得1金币");
