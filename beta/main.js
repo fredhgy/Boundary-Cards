@@ -27,7 +27,7 @@ function start(){
 		}
 		else{
 			deckdisplay();
-			alert("已存储套牌:" + carddis);
+			alert("使用的套牌:" + carddis);
 		}
 	}
 	document.getElementById("hdis").style.display = "block";
