@@ -105,18 +105,18 @@ function decksure(){
 	document.getElementById("deckopenradio").style.display="none";
 	introstart();
 	
-	setCookie("cardtot0",cardtot[0],1);
-	setCookie("cardtot1",cardtot[1],1);
-	setCookie("cardtot2",cardtot[2],1);
-	setCookie("cardtot3",cardtot[3],1);
-	setCookie("cardtot4",cardtot[4],1);
-	setCookie("cardtot5",cardtot[5],1);
-	setCookie("cardtot6",cardtot[6],1);
-	setCookie("cardtot7",cardtot[7],1);
-	setCookie("cardtot8",cardtot[8],1);
-	setCookie("cardtot9",cardtot[9],1);
-	setCookie("cardtot10",cardtot[10],1);
-	setCookie("cardtot11",cardtot[11],1);
+	setCookie("cardtot0",cardtot[0],30);
+	setCookie("cardtot1",cardtot[1],30);
+	setCookie("cardtot2",cardtot[2],30);
+	setCookie("cardtot3",cardtot[3],30);
+	setCookie("cardtot4",cardtot[4],30);
+	setCookie("cardtot5",cardtot[5],30);
+	setCookie("cardtot6",cardtot[6],30);
+	setCookie("cardtot7",cardtot[7],30);
+	setCookie("cardtot8",cardtot[8],30);
+	setCookie("cardtot9",cardtot[9],30);
+	setCookie("cardtot10",cardtot[10],30);
+	setCookie("cardtot11",cardtot[11],30);
 	//setCookie("cardtot12",cardtot[1],1)
 	decc=1;
 }

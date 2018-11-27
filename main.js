@@ -178,6 +178,8 @@ function main4(){
 	
 }
 
+var wintimes=0;
+var losetimes=0;
 function dead(){
 	document.getElementById("clife").innerHTML = clife;
 	document.getElementById("life").innerHTML = life;
@@ -186,6 +188,8 @@ function dead(){
 		if(mode==1){
 			alert("你输了！损失1金币");
 			deckbalance=deckbalance-1;
+			losetimes++;
+			setCookie("losetimes",losetimes,30);
 		}
 		if(mode==0){
 			alert("你输了！");
@@ -203,6 +207,8 @@ function dead(){
 			alert("你赢了！获得5金币");
 			deckbalance++;
 			deckbalance=deckbalance+4;
+			wintimes++;
+			setCookie("wintimes",wintimes,30);
 		}
 		if(mode==0){
 			alert("你赢了！获得1金币");
@@ -222,7 +228,16 @@ function dead(){
 		alert("双方战场，手牌均为空，按剩余血量多少判别胜负");
 		if(life<clife){
 
-			alert("你输了");
+			if(mode==1){
+				alert("你输了！损失1金币");
+				deckbalance=deckbalance-1;
+				losetimes++;
+				setCookie("losetimes",losetimes,30);
+			}
+			if(mode==0){
+				alert("你输了！");
+			}
+			setCookie("deckbalance",deckbalance,30);
 			deadand();
 			//location.reload();
 		}
@@ -233,8 +248,18 @@ function dead(){
 			//location.reload();
 		}
 		else{
-			alert("你赢了");
-			deadand();
+			if(mode==1){
+				alert("你赢了！获得5金币");
+				deckbalance++;
+				deckbalance=deckbalance+4;
+				wintimes++;
+				setCookie("wintimes",wintimes,30);
+			}
+			if(mode==0){
+				alert("你赢了！获得1金币");
+				deckbalance++;
+			}
+			setCookie("deckbalance",deckbalance,30);
 			//location.reload();
 		}
 		document.getElementById("restart").style.display = "block";
