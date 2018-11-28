@@ -63,21 +63,26 @@
 <div id="container" style="">
 
 <div id="header" style="background-color:red">
-<h1 style="margin-bottom:0;">Boundary Cards</h1>Android Online Beta:<text id="andversion"></text></div>
+<h1 style="margin-bottom:0;">Boundary Cards</h1>beta:<text id="version"></text></div>
 
-<div id="menu" style="background-color:#EEEEEE;height:auto;width:30%;float:left;">
-难度:<td><input name="diffcult" type="radio" onclick="diffcult(1)">普通</td>
-<td><input name="diffcult" type="radio" onclick="diffcult(2)">更高</td>
+<div id="menu" style="background-color:#EEEEEE;height:100%;width:25%;float:left;">
+<text id="deckbalance"></text>
+<table id="deckoption" style="display:none">
+<td><input name="diffcult" type="radio" onclick="deck()">构筑</td>
+<td><input name="diffcult" type="radio" onclick="limit()">现开</td>
+</table>
+
 <br>
-<input type="button" id="deck" value="套牌选择" onclick="deck()">
+<input type="button" id="deck" value="套牌及游戏模式选择" onclick="deckstart()">
 <br>
 <b>说明</b>
-<p id="intro">x|x代表生物，只能在自己回合使用:例如2|2，攻击力为2，生命为2，当生命为0时消失。在战斗回合，在战场格中每一个上下对应战斗，对手若对应位置没有生物，则对手损失血量，当任一一方血量为0时该方游戏失败。<br><br>-2-2表示法术，可以在任何回合使用，使用后会使电脑玩家指定战场格内的生物损失2点攻击力，2点血量</p>
+<p id="intro">欢迎体验，本游戏仍在持续更新中，如果出现错误敬请谅解。<br>反馈：<a href="mailto:me@heguangyu.net">me@heguangyu.net</a></p>
 </div>
 
-<div id="content" style="background-color:white;height:100%;width:70%;float:left;">
+<div id="content" style="background-color:white;height:100%;width:75%;float:left;">
 <br>
-<table id="decksel" style="display:none">
+游戏模式：<text id="gamemode"></text>
+<table id="decksel" style="display:none"><tr>
 <td><input name="deck" type="radio" onclick="yiyid()">1|1|d</td>
 <td><input name="deck" type="radio" onclick="yiyi()">1|1</td>
 <td><input name="deck" type="radio" onclick="erer()">2|2</td>
@@ -85,20 +90,69 @@
 <td><input name="deck" type="radio" onclick="sisi()">4|4</td>
 <td><input name="deck" type="radio" onclick="jianer()">-2-2</td>
 <td><input name="deck" type="radio" onclick="jianyi()">-1-1</td>
+</tr><tr>
 <td><input name="deck" type="radio" onclick="decmana()">mana</td>
 <td><input name="deck" type="radio" onclick="defaultdeck()">默认套牌</td>
-</table>
+</tr></table>
+
+<table id="decksaving" style="display:none;"><tr>
+<td><input name="decksaving" type="radio"  onclick=""><text id="decksaving1"></text></td>
+<td><input name="decksaving" type="radio"  onclick=""><text id="decksaving2"></text></td>
+<td><input name="decksaving" type="radio"  onclick=""><text id="decksaving3"></text></td>
+<td><input name="decksaving" type="radio"  onclick=""><text id="decksaving4"></text></td>
+<td><input name="decksaving" type="radio"  onclick=""><text id="decksaving5"></text></td>
+<td><input name="decksaving" type="radio"  onclick=""><text id="decksaving6"></text></td>
+</tr><tr>
+<td><input name="decksaving" type="radio"  onclick=""><text id="decksaving7"></text></td>
+<td><input name="decksaving" type="radio"  onclick=""><text id="decksaving8"></text></td>
+<td><input name="decksaving" type="radio"  onclick=""><text id="decksaving9"></text></td>
+<td><input name="decksaving" type="radio"  onclick=""><text id="decksaving10"></text></td>
+<td><input name="decksaving" type="radio"  onclick=""><text id="decksaving11"></text></td>
+<td><input name="decksaving" type="radio"  onclick=""><text id="decksaving12"></text></td>
+</tr></table>
+
+<table id="limitsaving" style="display:none;"><tr>
+<td><text id="limitsaving1"></text></td>
+<td><text id="limitsaving2"></text></td>
+<td><text id="limitsaving3"></text></td>
+<td><text id="limitsaving4"></text></td>
+<td><text id="limitsaving5"></text></td>
+<td><text id="limitsaving6"></text></td>
+</tr><tr>
+<td><text id="limitsaving7"></text></td>
+<td><text id="limitsaving8"></text></td>
+<td><text id="limitsaving9"></text></td>
+<td><text id="limitsaving10"></text></td>
+<td><text id="limitsaving11"></text></td>
+<td><text id="limitsaving12"></text></td>
+</tr></table>
+
 <p id="deckdis" style="display:none;width:auto"></p>
 <br>
 
-<input type="button" style="display:none;" id="decksure" value="确定" onclick="decksure()">
+<table id="deckbought" style="display:none">
+<td><text id="decknumber" ></text></td>
+</table>
 
-<input type="button" style="display:none;" id="deckdel" value="删除" onclick="deckdel()">
+<table id="deckopenradio" style="display:none;">
+<td><input name="deckopen" type="radio"  onclick="deckopen1()"><text id="deckopen1"></text></td>
+<td><input name="deckopen" type="radio"  onclick="deckopen2()"><text id="deckopen2"></text></td>
+<td><input name="deckopen" type="radio"  onclick="deckopen3()"><text id="deckopen3"></text></td>
+</table>
 
-<input type="button" style="display:none;" id="deckdisplay" value="显示当前存储套牌" onclick="decksaved()">
+<table id="decklimit" style="display:none">
+<td><input type="button" id="deckopen" value="打开卡包" onclick="deckopen()"></td>
+<td><input type="button" id="deckbuy" value="购买卡包" onclick="deckbuy()"></td>
+<td><input type="button" id="deckpay" value="重置余额和卡包数（测试用）" onclick="deckdefault()"></td>
+</table>
 
-<input type="button" style="display:none;" id="deckback" value="返回" onclick="deckback()">
-
+</table>
+<table id="deckbutton">
+<td><input type="button" style="display:none;" id="decksure" value="确定" onclick="decksure()"></td>
+<td><input type="button" style="display:none;" id="deckdel" value="删除" onclick="deckdel()"></td>
+<!-- <td><input type="button" style="display:none;" id="deckdisplay" value="显示当前存储套牌" onclick="decksaved()"></td> -->
+<td><input type="button" style="display:none;" id="deckback" value="返回" onclick="deckback()"></td>
+</table>
 
 <table id="cstatus" style="width:auto">
 <tbody ><tr>
@@ -111,8 +165,8 @@
 </tr>
 </tbody></table>
 
-<p id="chdis" style="display:block;width:auto"><b>电脑手牌：</b></p>
-<table id="chtdis" style="display:block;width:auto">
+<p id="chdis" style="display:none;width:auto"><b>电脑手牌：</b></p>
+<table id="chtdis" style="display:none;width:auto">
 <tbody><tr>
 <td><p id="chand1">null</p></td>
 <td><p id="chand2">null</p></td>
@@ -149,13 +203,13 @@
 </tbody></table>
 
 <p id="hdis" style="display:none;width:auto"><b>手牌：</b></p>
-<table id="htdis" style="display:none;width:auto" border="1">
+<table id="htdis" style="display:none;width:auto">
 <tbody><tr>
-<td><img id="ph1" src="null.gif" onclick="pcre1()"><p id="phand1">null</p></td>
-<td><img id="ph2" src="null.gif" onclick="pcre2()"><p id="phand2">null</p></td>
-<td><img id="ph3" src="null.gif" onclick="pcre3()"><p id="phand3">null</p></td>
-<td><img id="ph4" src="null.gif" onclick="pcre4()"><p id="phand4">null</p></td>
-<td><img id="ph5" src="null.gif" onclick="pcre5()"><p id="phand5">null</p></td>
+<td><img id="ph1" src="null.gif" onclick="pcre1()"><p style="display:none" id="phand1">null</p></td>
+<td><img id="ph2" src="null.gif" onclick="pcre2()"><p style="display:none" id="phand2">null</p></td>
+<td><img id="ph3" src="null.gif" onclick="pcre3()"><p style="display:none" id="phand3">null</p></td>
+<td><img id="ph4" src="null.gif" onclick="pcre4()"><p style="display:none" id="phand4">null</p></td>
+<td><img id="ph5" src="null.gif" onclick="pcre5()"><p style="display:none" id="phand5">null</p></td>
 </tr>
 </tbody></table>
 
@@ -189,6 +243,8 @@
 <script src="intro.js"></script>
 <script src="deck.js"></script>
 <script src="cardpicture.js"></script>
+<script src="limit.js"></script>
+<script src="display.js"></script>
 
 <script> 
 var mana=0;
@@ -200,18 +256,6 @@ document.getElementById("life").innerHTML = life;
 document.getElementById("clife").innerHTML = clife;
 document.getElementById("mana").innerHTML = mana;
 document.getElementById("cmana").innerHTML = cmana;
-
-var a;
-function diffcult(a){
-	if(a==1){
-		chdis.style.display = "block";
-		chtdis.style.display = "block";
-	}
-	if(a==2){
-		chdis.style.display = "none";
-		chtdis.style.display = "none";
-	}
-}
 
 function deadand(){//传递信息给安卓的java 
 	//var text=document.getElementById("text").value;  

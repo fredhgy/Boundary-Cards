@@ -82,7 +82,7 @@
 <div id="content" style="background-color:white;height:100%;width:75%;float:left;">
 <br>
 游戏模式：<text id="gamemode"></text>
-<table id="decksel1" style="display:none">
+<table id="decksel" style="display:none"><tr>
 <td><input name="deck" type="radio" onclick="yiyid()">1|1|d</td>
 <td><input name="deck" type="radio" onclick="yiyi()">1|1</td>
 <td><input name="deck" type="radio" onclick="erer()">2|2</td>
@@ -90,11 +90,43 @@
 <td><input name="deck" type="radio" onclick="sisi()">4|4</td>
 <td><input name="deck" type="radio" onclick="jianer()">-2-2</td>
 <td><input name="deck" type="radio" onclick="jianyi()">-1-1</td>
-</table>
-<table id="decksel2" style="display:none">
+</tr><tr>
 <td><input name="deck" type="radio" onclick="decmana()">mana</td>
 <td><input name="deck" type="radio" onclick="defaultdeck()">默认套牌</td>
-</table>
+</tr></table>
+
+<table id="decksaving" style="display:none;"><tr>
+<td><input name="decksaving" type="radio"  onclick=""><text id="decksaving1"></text></td>
+<td><input name="decksaving" type="radio"  onclick=""><text id="decksaving2"></text></td>
+<td><input name="decksaving" type="radio"  onclick=""><text id="decksaving3"></text></td>
+<td><input name="decksaving" type="radio"  onclick=""><text id="decksaving4"></text></td>
+<td><input name="decksaving" type="radio"  onclick=""><text id="decksaving5"></text></td>
+<td><input name="decksaving" type="radio"  onclick=""><text id="decksaving6"></text></td>
+</tr><tr>
+<td><input name="decksaving" type="radio"  onclick=""><text id="decksaving7"></text></td>
+<td><input name="decksaving" type="radio"  onclick=""><text id="decksaving8"></text></td>
+<td><input name="decksaving" type="radio"  onclick=""><text id="decksaving9"></text></td>
+<td><input name="decksaving" type="radio"  onclick=""><text id="decksaving10"></text></td>
+<td><input name="decksaving" type="radio"  onclick=""><text id="decksaving11"></text></td>
+<td><input name="decksaving" type="radio"  onclick=""><text id="decksaving12"></text></td>
+</tr></table>
+
+<table id="limitsaving" style="display:none;"><tr>
+<td><text id="limitsaving1"></text></td>
+<td><text id="limitsaving2"></text></td>
+<td><text id="limitsaving3"></text></td>
+<td><text id="limitsaving4"></text></td>
+<td><text id="limitsaving5"></text></td>
+<td><text id="limitsaving6"></text></td>
+</tr><tr>
+<td><text id="limitsaving7"></text></td>
+<td><text id="limitsaving8"></text></td>
+<td><text id="limitsaving9"></text></td>
+<td><text id="limitsaving10"></text></td>
+<td><text id="limitsaving11"></text></td>
+<td><text id="limitsaving12"></text></td>
+</tr></table>
+
 <p id="deckdis" style="display:none;width:auto"></p>
 <br>
 
@@ -114,13 +146,11 @@
 <td><input type="button" id="deckpay" value="重置余额和卡包数（测试用）" onclick="deckdefault()"></td>
 </table>
 
-
-
 </table>
 <table id="deckbutton">
 <td><input type="button" style="display:none;" id="decksure" value="确定" onclick="decksure()"></td>
 <td><input type="button" style="display:none;" id="deckdel" value="删除" onclick="deckdel()"></td>
-<td><input type="button" style="display:none;" id="deckdisplay" value="显示当前存储套牌" onclick="decksaved()"></td>
+<!-- <td><input type="button" style="display:none;" id="deckdisplay" value="显示当前存储套牌" onclick="decksaved()"></td> -->
 <td><input type="button" style="display:none;" id="deckback" value="返回" onclick="deckback()"></td>
 </table>
 
@@ -193,10 +223,10 @@
 </div>
 
 <div id="footer" style="background-color:#FFA500;clear:both;text-align:right;">
-<!--<a href="http://game.heguangyu.net">正式版</a>-->
+<!-- <a href="http://game.heguangyu.net">正式版</a> -->
 <a href="http://game.heguangyu.net/beta">测试版</a>
 <a href="http://www.heguangyu.net" target="_blank">© heguangyu.net</a>
-<a href="http://game.heguangyu.net/Boundarycards.apk" download="Boundarycards.apk">安卓版下载</a>
+<a href="http://game.heguangyu.net/Boundarycards.apk" download="Boundarycards.apk">安卓版下载</a>  
 </div>
 </div>
 
@@ -216,6 +246,7 @@
 <script src="deck.js"></script>
 <script src="cardpicture.js"></script>
 <script src="limit.js"></script>
+<script src="display.js"></script>
 
 <script> 
 var mana=0;
@@ -227,13 +258,6 @@ document.getElementById("life").innerHTML = life;
 document.getElementById("clife").innerHTML = clife;
 document.getElementById("mana").innerHTML = mana;
 document.getElementById("cmana").innerHTML = cmana;
-
-if(mode==1){
-	document.getElementById("gamemode").innerHTML = "现开模式";
-}
-if(mode==0){
-	document.getElementById("gamemode").innerHTML = "构筑模式";
-}
 
 //网页版Android无联动
 function deadand(){

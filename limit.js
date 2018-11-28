@@ -4,20 +4,7 @@ function limit(){
 		var r=confirm("切换游戏模式将删除原模式下套牌！")
 		if (r==true)
 		{
-			delCookie("cardtot0");
-			delCookie("cardtot1");
-			delCookie("cardtot2");
-			delCookie("cardtot3");
-			delCookie("cardtot4");
-			delCookie("cardtot5");
-			delCookie("cardtot6");
-			delCookie("cardtot7");
-			delCookie("cardtot8");
-			delCookie("cardtot9");
-			delCookie("cardtot10");
-			delCookie("cardtot11");
-			cardtot = [0,0,0,0,0,0,0,0,0,0,0,0];
-			deckdisplay();
+			deldeck();
 		}
 		else
 		{
@@ -26,29 +13,7 @@ function limit(){
 	}
 	mode=1;
 	setCookie("mode",mode,30);
-	document.getElementById("gamemode").innerHTML = "现开模式";
-	chdis.style.display = "none";
-	chtdis.style.display = "none";
-	pb.style.display = "none";
-	pbt.style.display = "none";
-	document.getElementById("status").style.display="none";
-	document.getElementById("cstatus").style.display="none";
-	document.getElementById("start").style.display="none";
-	document.getElementById("deckoption").style.display="block";
-	document.getElementById("deck").style.display="none";
-	
-	document.getElementById("decksure").style.display="block";
-	document.getElementById("deckdis").style.display="block";
-	document.getElementById("deckdel").style.display="block";
-	document.getElementById("deckback").style.display="block";
-	document.getElementById("deckdisplay").style.display="block";
-	
-	document.getElementById("decksel1").style.display="none";
-	document.getElementById("decksel2").style.display="none";
-	document.getElementById("decklimit").style.display="block";
-	document.getElementById("deckbought").style.display="block";
-	document.getElementById("deckopenradio").style.display="block";
-	
+	limitdisplay();
 	deckbalance=getCookie("deckbalance");
 	decknum=getCookie("decknum");
 	document.getElementById("deckbalance").innerHTML = "余额："+deckbalance;
@@ -219,4 +184,19 @@ function deckopen3(){
 		deckopenning[2]=null;
 	}
 	document.getElementById("deckopen3").innerHTML = deckopenning[2];
+}
+
+function limitsavingdis(){
+	document.getElementById("limitsaving1").innerHTML = cardtot[0];
+	document.getElementById("limitsaving2").innerHTML = cardtot[1];
+	document.getElementById("limitsaving3").innerHTML = cardtot[2];
+	document.getElementById("limitsaving4").innerHTML = cardtot[3];
+	document.getElementById("limitsaving5").innerHTML = cardtot[4];
+	document.getElementById("limitsaving6").innerHTML = cardtot[5];
+	document.getElementById("limitsaving7").innerHTML = cardtot[6];
+	document.getElementById("limitsaving8").innerHTML = cardtot[7];
+	document.getElementById("limitsaving9").innerHTML = cardtot[8];
+	document.getElementById("limitsaving10").innerHTML = cardtot[9];
+	document.getElementById("limitsaving11").innerHTML = cardtot[10];
+	document.getElementById("limitsaving12").innerHTML = cardtot[11];
 }

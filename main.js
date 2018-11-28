@@ -23,18 +23,16 @@ function start(){
 	else{
 		if(cardtot[0]==""){
 			alert("无已存储套牌，以默认套牌开始:" );
-			cardtot = [1,2,3,4,5,6,7,8,9,10,11,12];
+			defaultdeck();
 		}
 		else{
 			deckdisplay();
-			alert("使用的套牌:" + carddis);
+			alert("使用的套牌:" + cardtot);
 		}
 	}
 	document.getElementById("hdis").style.display = "block";
 	document.getElementById("htdis").style.display = "block";
 	document.getElementById("hdis").style.backgroundColor="green";
-
-	document.getElementById("chdis").style.backgroundColor="white";
 
 	document.getElementById("mana").innerHTML = mana;
 	document.getElementById("cmana").innerHTML = cmana;
@@ -45,7 +43,6 @@ function start(){
 	pdraw();
 	order = 1;
 	cardpicture();
-	
 }
 
 //电脑回合
@@ -59,9 +56,7 @@ function main1(){
 	}
 	
 	document.getElementById("hdis").style.backgroundColor="white";
-	
 	document.getElementById("chdis").style.backgroundColor="green";
-
 	document.getElementById("pb").style.backgroundColor="white";
 	
 	document.getElementById("mana").innerHTML = mana;
@@ -91,6 +86,7 @@ function main2(){
 	document.getElementById("cbp1").style.border="0px";
 	document.getElementById("cbp2").style.border="0px";
 	document.getElementById("cbp3").style.border="0px";
+	
 	document.getElementById("button4").style.display = "none";
 	if(order==1){
 		document.getElementById("button1").style.display = "block";
@@ -108,13 +104,11 @@ function main2(){
 	getpandt();
 	battle();
 	returnpandt();
-	dead();
-	
+	dead();	
 }
 
 //你的回合
 function main3(){
-	
 	mana=oldmana;
 	introstart();
 	if(life<5){
@@ -123,9 +117,6 @@ function main3(){
 	else{
 		document.getElementById("life").style.backgroundColor="white";
 	}
-	
-	hdis.style.display = "block";
-	htdis.style.display = "block";
 	
 	document.getElementById("hdis").style.backgroundColor="green";
 	document.getElementById("chdis").style.backgroundColor="white";
@@ -136,11 +127,13 @@ function main3(){
 		
 	document.getElementById("button3").style.display = "none";
 	document.getElementById("button1").style.display = "none";
+	document.getElementById("button2").style.display = "block";
+	
 	order = 1;
 	turn = 0;
 	pdraw();
 	cardpicture();
-	document.getElementById("button2").style.display = "block";
+	
 	if(pb1==1||pb2==1||pb3==1){
 		document.getElementById("button4").style.display = "block";
 		document.getElementById("button2").style.display = "none";
@@ -170,12 +163,7 @@ function main4(){
 		document.getElementById("pac3").style.display = "block";
 		document.getElementById("pac3").checked = true;
 		
-	}
-
-	
-	
-	
-	
+	}	
 }
 
 var wintimes=0;
@@ -195,8 +183,9 @@ function dead(){
 			alert("你输了！");
 		}
 		setCookie("deckbalance",deckbalance,30);
+		
 		deadand();
-		//location.reload();
+		
 		document.getElementById("restart").style.display = "block";
 		document.getElementById("button1").style.display = "none";
 		document.getElementById("button2").style.display = "none";
@@ -215,8 +204,9 @@ function dead(){
 			deckbalance++;
 		}
 		setCookie("deckbalance",deckbalance,30);
+		
 		deadand();
-		//location.reload();
+
 		document.getElementById("restart").style.display = "block";
 		document.getElementById("button1").style.display = "none";
 		document.getElementById("button2").style.display = "none";
@@ -238,14 +228,14 @@ function dead(){
 				alert("你输了！");
 			}
 			setCookie("deckbalance",deckbalance,30);
+			
 			deadand();
-			//location.reload();
 		}
 		else if(clife==life){
 
 			alert("平局");
+			
 			deadand();
-			//location.reload();
 		}
 		else{
 			if(mode==1){
@@ -260,7 +250,8 @@ function dead(){
 				deckbalance++;
 			}
 			setCookie("deckbalance",deckbalance,30);
-			//location.reload();
+			
+			deadand();
 		}
 		document.getElementById("restart").style.display = "block";
 		document.getElementById("button1").style.display = "none";
