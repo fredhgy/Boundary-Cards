@@ -1,0 +1,2044 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">   
+	<meta name="viewport" content="width=device-width, initial-scale=0.6,maximum-scale=0.6, user-scalable=no" />
+	<title>Boundary Cards beta</title>
+	<style>
+	html {
+	font-family: sans-serif, '黑体';
+	}
+	body {
+	width: 30%;
+	max-width: 1500px;
+	min-width: 700px;
+	margin:0px auto;
+	-moz-user-select:none;/*火狐*/
+    -webkit-user-select:none;/*webkit浏览器*/
+    -ms-user-select:none;/*IE10*/
+    -khtml-user-select:none;/*早期浏览器*/
+    user-select:none;
+	}
+	.lastResult {
+	color: white;
+	padding: 3px;
+	}
+	</style>
+	<script> 
+		function setCookie(cname,cvalue,exdays){
+			var d = new Date();
+			d.setTime(d.getTime()+(exdays*24*60*60*1000));
+			var expires = "expires="+d.toGMTString();
+			document.cookie = cname+"="+cvalue+"; "+expires;
+		}
+		function getCookie(cname){
+			var name = cname + "=";
+			var ca = document.cookie.split(';');
+			for(var i=0; i<ca.length; i++) {
+				var c = ca[i].trim();
+				if (c.indexOf(name)==0) { return c.substring(name.length,c.length); }
+			}
+			return "";
+		}
+		function delCookie(cname) {
+			document.cookie = cname + "=" + ";expires=Thu, 01 Jan 1970 00:00:00 GMT";
+		}
+		//function checkCookie(){
+			//var user=getCookie("username");
+			//if (user!=""){
+			//	alert("欢迎 " + user + " 再次访问");
+			//}
+			//else {
+			//	user = prompt("请输入你的名字:","");
+			//	if (user!="" && user!=null){
+			//    setCookie("username",user,30);
+			//	}
+			//}
+		 //} 
+	</script>
+</head>
+<body>
+<div id="container" style="">
+<div id="header" style="background-color:red">
+<h1 style="margin-bottom:0;">Boundary Cards</h1>pvp:<text id="version"></text></div>
+<div id="menu" style="background-color:#EEEEEE;height:100%;width:25%;float:left;">
+<b>说明</b>
+<p id="intro">欢迎体验，本游戏仍在持续更新中，如果出现错误敬请谅解。<br>反馈：<a href="mailto:me@heguangyu.net">me@heguangyu.net</a></p>
+</div>
+<div id="content" style="background-color:white;height:100%;width:75%;float:left;">
+<br>
+<table id="cstatus" style="width:auto">
+<tbody ><tr>
+<td><b>玩家2法力：</b></td>
+<td id="cmana">0</td>
+</tr>
+<tr>
+<td><b>玩家2生命：</b></td>
+<td id="clife">0</td>
+</tr>
+</tbody></table>
+<p id="chdis" style="width:auto"><b>玩家2手牌：</b></p>
+<table style="width:auto">
+<tbody><tr>
+<td><img id="ch1" src="null.gif" onclick="ccre1()"><p style="display:" id="chand1">null</p></td>
+<td><img id="ch2" src="null.gif" onclick="ccre2()"><p style="display:" id="chand2">null</p></td>
+<td><img id="ch3" src="null.gif" onclick="ccre3()"><p style="display:" id="chand3">null</p></td>
+<td><img id="ch4" src="null.gif" onclick="ccre4()"><p style="display:" id="chand4">null</p></td>
+<td><img id="ch5" src="null.gif" onclick="ccre5()"><p style="display:" id="chand5">null</p></td>
+</tr>
+</tbody></table>
+<p id="cb" style="width:auto"><b>战场格：</b></p>
+<table style="width:auto">
+<tbody><tr>
+<td ><img id="cbp1" src="null.gif" onclick="cblock1(battlecard)"><input id="cac1" type="checkbox" style="display:none"/></td>
+<td ><img id="cbp2" src="null.gif" onclick="cblock2(battlecard)"><input id="cac1" type="checkbox" style="display:none"/></td>
+<td ><img id="cbp3" src="null.gif" onclick="cblock3(battlecard)"><input id="cac1" type="checkbox" style="display:none"/></td>
+</tr>
+<tr>
+<td ><img id="pbp1" src="null.gif" onclick="pblock1(battlecard)"><input id="pac1" type="checkbox" style="display:none"/></td>
+<td ><img id="pbp2" src="null.gif" onclick="pblock2(battlecard)"><input id="pac2" type="checkbox" style="display:none"/></td>
+<td ><img id="pbp3" src="null.gif" onclick="pblock3(battlecard)"><input id="pac3" type="checkbox" style="display:none"/></td>
+</tr>
+</tbody></table>
+<p id="pb" style="width:auto"><b>战场格：</b></p>
+<table id="status" style="width:auto">
+<tbody ><tr>
+<td><b>玩家1法力：</b></td>
+<td id="mana">0</td>
+</tr>
+<tr>
+<td><b>玩家1生命：</b></td>
+<td id="life">0</td>
+</tr>
+</tbody></table>
+<p id="phdis" style="width:auto"><b>玩家1手牌：</b></p>
+<table style="width:auto">
+<tbody><tr>
+<td><img id="ph1" src="null.gif" onclick="pcre1()"><p style="display:" id="phand1">null</p></td>
+<td><img id="ph2" src="null.gif" onclick="pcre2()"><p style="display:" id="phand2">null</p></td>
+<td><img id="ph3" src="null.gif" onclick="pcre3()"><p style="display:" id="phand3">null</p></td>
+<td><img id="ph4" src="null.gif" onclick="pcre4()"><p style="display:" id="phand4">null</p></td>
+<td><img id="ph5" src="null.gif" onclick="pcre5()"><p style="display:" id="phand5">null</p></td>
+</tr>
+</tbody></table>
+<br>
+<input type="button" id="start" style="height:60px;width:120px" value="开始" onclick="start()">
+<input type="button" id="pbutton" style="display:none;height:60px;width:120px" value="玩家1回合" onclick="main1()">
+<input type="button" id="cbutton" style="display:none;height:60px;width:120px" value="玩家2回合" onclick="main2()">
+<input type="button" id="pbbutton" style="display:none;height:60px;width:120px" value="玩家1战斗结算" onclick="pbattle()">
+<input type="button" id="cbbutton" style="display:none;height:60px;width:120px" value="玩家2战斗结算" onclick="cbattle()">
+<input type="button" id="pcbutton" style="display:none;height:60px;width:120px" value="玩家1战斗选择" onclick="pattackchoose()">
+<input type="button" id="ccbutton" style="display:none;height:60px;width:120px" value="玩家2战斗选择" onclick="cattackchoose()">
+<input type="button" id="restart" style="display:none;height:60px;width:120px" value="重新开始" onclick="restart()">
+</div>
+<div id="footer" style="background-color:#FFA500;clear:both;text-align:right;">
+<a href="http://www.heguangyu.net" target="_blank">© heguangyu.net</a> 
+</div>
+</div>
+<script> 
+var mana=0;
+var cmana=0;
+var life=10;
+var clife=10;
+var oldmana=0;
+var coldmana=0;
+var turn = 1;
+var order;
+//玩家1回合，开始
+function start(){
+	var rn = Math.floor(Math.random() * 10) + 1;
+	alert("通过奇偶判断先手");
+	alert(rn);
+	pdraw();
+	turn=2;
+	order=1;
+	document.getElementById("life").innerHTML = life;
+	document.getElementById("clife").innerHTML = clife;
+	document.getElementById("mana").innerHTML = mana;
+	document.getElementById("cmana").innerHTML = cmana;
+	document.getElementById("phdis").style.backgroundColor="green";
+	document.getElementById("pbbutton").style.display = "block";
+	document.getElementById("start").style.display = "none";
+}
+//玩家1回合
+function main1(){
+	document.getElementById("phdis").style.backgroundColor="green";
+	document.getElementById("chdis").style.backgroundColor="white";
+	document.getElementById("pb").style.backgroundColor="white";
+	document.getElementById("cb").style.backgroundColor="white";
+	document.getElementById("pbutton").style.display = "none";
+	document.getElementById("pbbutton").style.display = "block";
+	pdraw();
+	turn = 2;
+	order = 1;
+}
+//玩家2回合
+function main2(){
+	document.getElementById("phdis").style.backgroundColor="white";
+	document.getElementById("chdis").style.backgroundColor="green";
+	document.getElementById("pb").style.backgroundColor="white";
+	document.getElementById("cb").style.backgroundColor="white";
+	document.getElementById("cbutton").style.display = "none";
+	document.getElementById("cbbutton").style.display = "block";
+	cdraw();
+	turn = 1;
+	order = 2;
+}
+//玩家1战斗结算
+function pbattle(){
+	document.getElementById("phdis").style.backgroundColor="white";
+	document.getElementById("chdis").style.backgroundColor="white";
+	document.getElementById("pb").style.backgroundColor="green";
+	document.getElementById("cb").style.backgroundColor="white";
+	document.getElementById("pbbutton").style.display = "none";
+	document.getElementById("cbutton").style.display = "block";
+}
+//玩家2战斗结算
+function cbattle(){
+	document.getElementById("phdis").style.backgroundColor="white";
+	document.getElementById("chdis").style.backgroundColor="white";
+	document.getElementById("pb").style.backgroundColor="white";
+	document.getElementById("cb").style.backgroundColor="green";
+	document.getElementById("cbbutton").style.display = "none";
+	document.getElementById("pbutton").style.display = "block";
+}
+//玩家1战斗选择
+function pattackchoose(){
+}
+//玩家2战斗选择
+function cattackchoose(){
+}
+//初始化套牌
+var cardtot0=new Array();
+for(var i=0;i<12;i++){
+	cardtot0[i] = 0;
+}
+//初始化玩家1套牌
+var pcardtot=new Array();
+for(var i=0;i<12;i++){
+	pcardtot[i] = 0;
+}
+pcardtot = ["mana","mana","mana","mana","mana","1|1|d","1|1","2|2","3|3","4|4","-2-2","-1-1"];
+//初始化玩家2套牌
+var ccardtot=new Array();
+for(var i=0;i<12;i++){
+	ccardtot[i] = 0;
+}
+ccardtot = ["mana","mana","mana","mana","mana","1|1|d","1|1","2|2","3|3","4|4","-2-2","-1-1"];
+//玩家1抽牌
+var pcard = 0;
+var pcard1,pcard2,pcard3,pcard4,pcard5;
+var zp,zzp;
+zzp = 0;
+var j1 = 0;
+var j2 = 0;
+var j3 = 0;
+var j4 = 0;
+var j5 = 0;
+function pdraw(){
+	zp = true;
+	if(zzp==12||pcardtot==cardtot0){
+		pcard = 0;
+	}
+	while(zp&&zzp!=12){
+		var dn = Math.floor((Math.random()*pcardtot.length));
+		var d = pcardtot[dn];
+		if(d!=0){
+			zp = false;
+			zzp++;
+			pcardtot[dn] = 0;
+		}		
+	}
+	pcard=d;
+	if(j1==0){
+		pcard1 = pcard;
+		document.getElementById("phand1").innerHTML = pcard1;
+		j1 = 1;
+		cardpicture();
+		return;
+	}
+	if(j1==1&&j2==0){
+		pcard2 = pcard;
+		document.getElementById("phand2").innerHTML = pcard2;
+		j2 = 1;
+		cardpicture();
+		return;
+	}
+	if(j1==1&&j2==1&&j3==0){
+		pcard3 = pcard;
+		document.getElementById("phand3").innerHTML = pcard3;
+		j3 = 1;
+		cardpicture();
+		return;
+	}
+	if(j1==1&&j2==1&&j3==1&&j4==0){
+		pcard4 = pcard;
+		document.getElementById("phand4").innerHTML = pcard4;
+		j4 = 1;
+		cardpicture();
+		return;
+	}
+	if(j1==1&&j2==1&&j3==1&&j4==1&&j5==0){
+		pcard5 = pcard;
+		document.getElementById("phand5").innerHTML = pcard5;
+		j5 = 1;
+		cardpicture();
+		return;
+	}
+	if(j1==1&&j2==1&&j3==1&&j4==1&&j5==1&&zzp!=12){
+		alert("手牌已满！替换第一张牌");
+		pcard1 = pcard;
+		document.getElementById("phand1").innerHTML = pcard1;
+		cardpicture();
+		return;
+	}
+}
+//玩家2抽牌
+var ccard = 0;
+var ccard1,ccard2,ccard3,ccard4,ccard5;
+var zc,zzc;
+zzc = 0;
+var h1 = 0;
+var h2 = 0;
+var h3 = 0;
+var h4 = 0;
+var h5 = 0;
+function cdraw(){
+	zc = true;
+	if(zzc==12||ccardtot==cardtot0){
+		ccard = 0;
+	}
+	while(zc&&zzc!=12){
+		var dn = Math.floor((Math.random()*ccardtot.length));
+		var d = ccardtot[dn];
+		if(d!=0){
+			zc = false;
+			zzc++;
+			ccardtot[dn] = 0;
+		}		
+	}
+	ccard = d;
+	if(h1==0){
+		ccard1 = ccard;
+		document.getElementById("chand1").innerHTML = ccard1;
+		h1 = 1;
+		cardpicture();
+		return;
+	}
+	if(h1==1&&h2==0){
+		ccard2 = ccard;
+		document.getElementById("chand2").innerHTML = ccard2;
+		h2 = 1;
+		cardpicture();
+		return;
+	}
+	if(h1==1&&h2==1&&h3==0){
+		ccard3 = ccard;
+		document.getElementById("chand3").innerHTML = ccard3;
+		h3 = 1;
+		cardpicture();
+		return;
+	}
+	if(h1==1&&h2==1&&h3==1&&h4==0){
+		ccard4 = ccard;
+		document.getElementById("chand4").innerHTML = ccard4;
+		h4 = 1;
+		cardpicture();
+		return;
+	}
+	if(h1==1&&h2==1&&h3==1&&h4==1&&h5==0){
+		ccard5 = ccard;
+		document.getElementById("chand5").innerHTML = ccard5;
+		h5 = 1;
+		cardpicture();
+		return;
+	}
+	if(h1==1&&h2==1&&h3==1&&h4==1&&h5==1&&zzc!=12){
+		alert("手牌已满！替换第一张牌");
+		ccard1 = ccard;
+		document.getElementById("chand1").innerHTML = ccard1;
+		cardpicture();
+		return;
+	}
+}
+//显示图片
+function cardpicture(){
+	if(pcard1=="mana"){
+		document.getElementById("ph1").src = "mana.gif";
+	}
+	else if(pcard1=="1|1|d"){
+		document.getElementById("ph1").src = "11dh.gif";
+	}
+	else if(pcard1=="1|1"){
+		document.getElementById("ph1").src = "11h.gif";
+	}
+	else if(pcard1=="2|2"){
+		document.getElementById("ph1").src = "22h.gif";
+	}
+	else if(pcard1=="3|3"){
+		document.getElementById("ph1").src = "33h.gif";
+	}
+	else if(pcard1=="4|4"){
+		document.getElementById("ph1").src = "44h.gif";
+	}
+	else if(pcard1=="-2-2"){
+		document.getElementById("ph1").src = "fuer.gif";
+	}
+	else if(pcard1=="-1-1"){
+		document.getElementById("ph1").src = "fuyi.gif";
+	}
+	else{
+		document.getElementById("ph1").src = "null.gif";
+	}
+	if(pcard2=="mana"){
+		document.getElementById("ph2").src = "mana.gif";
+	}
+	else if(pcard2=="1|1|d"){
+		document.getElementById("ph2").src = "11dh.gif";
+	}
+	else if(pcard2=="1|1"){
+		document.getElementById("ph2").src = "11h.gif";
+	}
+	else if(pcard2=="2|2"){
+		document.getElementById("ph2").src = "22h.gif";
+	}
+	else if(pcard2=="3|3"){
+		document.getElementById("ph2").src = "33h.gif";
+	}
+	else if(pcard2=="4|4"){
+		document.getElementById("ph2").src = "44h.gif";
+	}
+	else if(pcard2=="-2-2"){
+		document.getElementById("ph2").src = "fuer.gif";
+	}
+	else if(pcard2=="-1-1"){
+		document.getElementById("ph2").src = "fuyi.gif";
+	}
+	else{
+		document.getElementById("ph2").src = "null.gif";
+	}
+	if(pcard3=="mana"){
+		document.getElementById("ph3").src = "mana.gif";
+	}
+	else if(pcard3=="1|1|d"){
+		document.getElementById("ph3").src = "11dh.gif";
+	}
+	else if(pcard3=="1|1"){
+		document.getElementById("ph3").src = "11h.gif";
+	}
+	else if(pcard3=="2|2"){
+		document.getElementById("ph3").src = "22h.gif";
+	}
+	else if(pcard3=="3|3"){
+		document.getElementById("ph3").src = "33h.gif";
+	}
+	else if(pcard3=="4|4"){
+		document.getElementById("ph3").src = "44h.gif";
+	}
+	else if(pcard3=="-2-2"){
+		document.getElementById("ph3").src = "fuer.gif";
+	}
+	else if(pcard3=="-1-1"){
+		document.getElementById("ph3").src = "fuyi.gif";
+	}
+	else{
+		document.getElementById("ph3").src = "null.gif";
+	}
+	if(pcard4=="mana"){
+		document.getElementById("ph4").src = "mana.gif";
+	}
+	else if(pcard4=="1|1|d"){
+		document.getElementById("ph4").src = "11dh.gif";
+	}
+	else if(pcard4=="1|1"){
+		document.getElementById("ph4").src = "11h.gif";
+	}
+	else if(pcard4=="2|2"){
+		document.getElementById("ph4").src = "22h.gif";
+	}
+	else if(pcard4=="3|3"){
+		document.getElementById("ph4").src = "33h.gif";
+	}
+	else if(pcard4=="4|4"){
+		document.getElementById("ph4").src = "44h.gif";
+	}
+	else if(pcard4=="-2-2"){
+		document.getElementById("ph4").src = "fuer.gif";
+	}
+	else if(pcard4=="-1-1"){
+		document.getElementById("ph4").src = "fuyi.gif";
+	}
+	else{
+		document.getElementById("ph4").src = "null.gif";
+	}
+	if(pcard5=="mana"){
+		document.getElementById("ph5").src = "mana.gif";
+	}
+	else if(pcard5=="1|1|d"){
+		document.getElementById("ph5").src = "11dh.gif";
+	}
+	else if(pcard5=="1|1"){
+		document.getElementById("ph5").src = "11h.gif";
+	}
+	else if(pcard5=="2|2"){
+		document.getElementById("ph5").src = "22h.gif";
+	}
+	else if(pcard5=="3|3"){
+		document.getElementById("ph5").src = "33h.gif";
+	}
+	else if(pcard5=="4|4"){
+		document.getElementById("ph5").src = "44h.gif";
+	}
+	else if(pcard5=="-2-2"){
+		document.getElementById("ph5").src = "fuer.gif";
+	}
+	else if(pcard5=="-1-1"){
+		document.getElementById("ph5").src = "fuyi.gif";
+	}
+	else{
+		document.getElementById("ph5").src = "null.gif";
+	}
+	//---------------------------
+	if(ccard1=="mana"){
+		document.getElementById("ch1").src = "mana.gif";
+	}
+	else if(ccard1=="1|1|d"){
+		document.getElementById("ch1").src = "11dh.gif";
+	}
+	else if(ccard1=="1|1"){
+		document.getElementById("ch1").src = "11h.gif";
+	}
+	else if(ccard1=="2|2"){
+		document.getElementById("ch1").src = "22h.gif";
+	}
+	else if(ccard1=="3|3"){
+		document.getElementById("ch1").src = "33h.gif";
+	}
+	else if(ccard1=="4|4"){
+		document.getElementById("ch1").src = "44h.gif";
+	}
+	else if(ccard1=="-2-2"){
+		document.getElementById("ch1").src = "fuer.gif";
+	}
+	else if(ccard1=="-1-1"){
+		document.getElementById("ch1").src = "fuyi.gif";
+	}
+	else{
+		document.getElementById("ch1").src = "null.gif";
+	}
+	if(ccard2=="mana"){
+		document.getElementById("ch2").src = "mana.gif";
+	}
+	else if(ccard2=="1|1|d"){
+		document.getElementById("ch2").src = "11dh.gif";
+	}
+	else if(ccard2=="1|1"){
+		document.getElementById("ch2").src = "11h.gif";
+	}
+	else if(ccard2=="2|2"){
+		document.getElementById("ch2").src = "22h.gif";
+	}
+	else if(ccard2=="3|3"){
+		document.getElementById("ch2").src = "33h.gif";
+	}
+	else if(ccard2=="4|4"){
+		document.getElementById("ch2").src = "44h.gif";
+	}
+	else if(ccard2=="-2-2"){
+		document.getElementById("ch2").src = "fuer.gif";
+	}
+	else if(ccard2=="-1-1"){
+		document.getElementById("ch2").src = "fuyi.gif";
+	}
+	else{
+		document.getElementById("ch2").src = "null.gif";
+	}
+	if(ccard3=="mana"){
+		document.getElementById("ch3").src = "mana.gif";
+	}
+	else if(ccard3=="1|1|d"){
+		document.getElementById("ch3").src = "11dh.gif";
+	}
+	else if(ccard3=="1|1"){
+		document.getElementById("ch3").src = "11h.gif";
+	}
+	else if(ccard3=="2|2"){
+		document.getElementById("ch3").src = "22h.gif";
+	}
+	else if(ccard3=="3|3"){
+		document.getElementById("ch3").src = "33h.gif";
+	}
+	else if(ccard3=="4|4"){
+		document.getElementById("ch3").src = "44h.gif";
+	}
+	else if(ccard3=="-2-2"){
+		document.getElementById("ch3").src = "fuer.gif";
+	}
+	else if(ccard3=="-1-1"){
+		document.getElementById("ch3").src = "fuyi.gif";
+	}
+	else{
+		document.getElementById("ch3").src = "null.gif";
+	}
+	if(ccard4=="mana"){
+		document.getElementById("ch4").src = "mana.gif";
+	}
+	else if(ccard4=="1|1|d"){
+		document.getElementById("ch4").src = "11dh.gif";
+	}
+	else if(ccard4=="1|1"){
+		document.getElementById("ch4").src = "11h.gif";
+	}
+	else if(ccard4=="2|2"){
+		document.getElementById("ch4").src = "22h.gif";
+	}
+	else if(ccard4=="3|3"){
+		document.getElementById("ch4").src = "33h.gif";
+	}
+	else if(ccard4=="4|4"){
+		document.getElementById("ch4").src = "44h.gif";
+	}
+	else if(ccard4=="-2-2"){
+		document.getElementById("ch4").src = "fuer.gif";
+	}
+	else if(ccard4=="-1-1"){
+		document.getElementById("ch4").src = "fuyi.gif";
+	}
+	else{
+		document.getElementById("ch4").src = "null.gif";
+	}
+	if(ccard5=="mana"){
+		document.getElementById("ch5").src = "mana.gif";
+	}
+	else if(ccard5=="1|1|d"){
+		document.getElementById("ch5").src = "11dh.gif";
+	}
+	else if(ccard5=="1|1"){
+		document.getElementById("ch5").src = "11h.gif";
+	}
+	else if(ccard5=="2|2"){
+		document.getElementById("ch5").src = "22h.gif";
+	}
+	else if(ccard5=="3|3"){
+		document.getElementById("ch5").src = "33h.gif";
+	}
+	else if(ccard5=="4|4"){
+		document.getElementById("ch5").src = "44h.gif";
+	}
+	else if(ccard5=="-2-2"){
+		document.getElementById("ch5").src = "fuer.gif";
+	}
+	else if(ccard5=="-1-1"){
+		document.getElementById("ch5").src = "fuyi.gif";
+	}
+	else{
+		document.getElementById("ch5").src = "null.gif";
+	}
+}
+function battlepicture(){
+	if(pbattle1=="mana"){
+		document.getElementById("pbp1").src = "mana.gif";
+	}
+	else if(pbattle1=="1|1|d"){
+		document.getElementById("pbp1").src = "11d.gif";
+	}
+	else if(pbattle1=="1|1"){
+		document.getElementById("pbp1").src = "11.gif";
+	}
+	else if(pbattle1=="2|2"){
+		document.getElementById("pbp1").src = "22.gif";
+	}
+	else if(pbattle1=="3|3"){
+		document.getElementById("pbp1").src = "33.gif";
+	}
+	else if(pbattle1=="4|4"){
+		document.getElementById("pbp1").src = "44.gif";
+	}
+	else if(pbattle1=="-2-2"){
+		document.getElementById("pbp1").src = "fuer.gif";
+	}
+	else if(pbattle1=="-1-1"){
+		document.getElementById("pbp1").src = "fuyi.gif";
+	}
+	else{
+		document.getElementById("pbp1").src = "null.gif";
+	}
+	if(pbattle2=="mana"){
+		document.getElementById("pbp2").src = "mana.gif";
+	}
+	else if(pbattle2=="1|1|d"){
+		document.getElementById("pbp2").src = "11d.gif";
+	}
+	else if(pbattle2=="1|1"){
+		document.getElementById("pbp2").src = "11.gif";
+	}
+	else if(pbattle2=="2|2"){
+		document.getElementById("pbp2").src = "22.gif";
+	}
+	else if(pbattle2=="3|3"){
+		document.getElementById("pbp2").src = "33.gif";
+	}
+	else if(pbattle2=="4|4"){
+		document.getElementById("pbp2").src = "44.gif";
+	}
+	else if(pbattle2=="-2-2"){
+		document.getElementById("pbp2").src = "fuer.gif";
+	}
+	else if(pbattle2=="-1-1"){
+		document.getElementById("pbp2").src = "fuyi.gif";
+	}
+	else{
+		document.getElementById("pbp2").src = "null.gif";
+	}
+	if(pbattle3=="mana"){
+		document.getElementById("pbp3").src = "mana.gif";
+	}
+	else if(pbattle3=="1|1|d"){
+		document.getElementById("pbp3").src = "11d.gif";
+	}
+	else if(pbattle3=="1|1"){
+		document.getElementById("pbp3").src = "11.gif";
+	}
+	else if(pbattle3=="2|2"){
+		document.getElementById("pbp3").src = "22.gif";
+	}
+	else if(pbattle3=="3|3"){
+		document.getElementById("pbp3").src = "33.gif";
+	}
+	else if(pbattle3=="4|4"){
+		document.getElementById("pbp3").src = "44.gif";
+	}
+	else if(pbattle3=="-2-2"){
+		document.getElementById("pbp3").src = "fuer.gif";
+	}
+	else if(pbattle3=="-1-1"){
+		document.getElementById("pbp3").src = "fuyi.gif";
+	}
+	else{
+		document.getElementById("pbp3").src = "null.gif";
+	}
+	if(cbattle1=="mana"){
+		document.getElementById("cbp1").src = "mana.gif";
+	}
+	else if(cbattle1=="1|1|d"){
+		document.getElementById("cbp1").src = "11d.gif";
+	}
+	else if(cbattle1=="1|1"){
+		document.getElementById("cbp1").src = "11.gif";
+	}
+	else if(cbattle1=="2|2"){
+		document.getElementById("cbp1").src = "22.gif";
+	}
+	else if(cbattle1=="3|3"){
+		document.getElementById("cbp1").src = "33.gif";
+	}
+	else if(cbattle1=="4|4"){
+		document.getElementById("cbp1").src = "44.gif";
+	}
+	else if(cbattle1=="-2-2"){
+		document.getElementById("cbp1").src = "fuer.gif";
+	}
+	else if(cbattle1=="-1-1"){
+		document.getElementById("cbp1").src = "fuyi.gif";
+	}
+	else{
+		document.getElementById("cbp1").src = "null.gif";
+	}
+	if(cbattle2=="mana"){
+		document.getElementById("cbp2").src = "mana.gif";
+	}
+	else if(cbattle2=="1|1|d"){
+		document.getElementById("cbp2").src = "11d.gif";
+	}
+	else if(cbattle2=="1|1"){
+		document.getElementById("cbp2").src = "11.gif";
+	}
+	else if(cbattle2=="2|2"){
+		document.getElementById("cbp2").src = "22.gif";
+	}
+	else if(cbattle2=="3|3"){
+		document.getElementById("cbp2").src = "33.gif";
+	}
+	else if(cbattle2=="4|4"){
+		document.getElementById("cbp2").src = "44.gif";
+	}
+	else if(cbattle2=="-2-2"){
+		document.getElementById("cbp2").src = "fuer.gif";
+	}
+	else if(cbattle2=="-1-1"){
+		document.getElementById("cbp2").src = "fuyi.gif";
+	}
+	else{
+		document.getElementById("cbp2").src = "null.gif";
+	}
+	if(cbattle3=="mana"){
+		document.getElementById("cbp3").src = "mana.gif";
+	}
+	else if(cbattle3=="1|1|d"){
+		document.getElementById("cbp3").src = "11d.gif";
+	}
+	else if(cbattle3=="1|1"){
+		document.getElementById("cbp3").src = "11.gif";
+	}
+	else if(cbattle3=="2|2"){
+		document.getElementById("cbp3").src = "22.gif";
+	}
+	else if(cbattle3=="3|3"){
+		document.getElementById("cbp3").src = "33.gif";
+	}
+	else if(cbattle3=="4|4"){
+		document.getElementById("cbp3").src = "44.gif";
+	}
+	else if(cbattle3=="-2-2"){
+		document.getElementById("cbp3").src = "fuer.gif";
+	}
+	else if(cbattle3=="-1-1"){
+		document.getElementById("cbp3").src = "fuyi.gif";
+	}
+	else{
+		document.getElementById("cbp3").src = "null.gif";
+	}
+}
+//玩家1出牌
+function pcre1(){
+	if(pcard1=="-2-2"||pcard1=="-1-1"){
+		var m = manaenough(pcard1,mana);
+		if(m==true){
+			j1 = 0; 
+			cre(pcard1);
+			pcard1 = 0;
+			document.getElementById("phand1").innerHTML = pcard1;
+			cardpicture();
+		}
+		else{
+			alert("法力不足");
+		}
+	}
+	if(order==1&&pcard1!="-2-2"&&pcard1!="-1-1"){
+		var m = manaenough(pcard1,mana);
+		if(m==true){
+			cre(pcard1); 		
+		}
+		else if(m==3){
+			j1 = 0;  
+			cre(pcard1); 
+			pcard1=0;
+			document.getElementById("phand1").innerHTML = pcard1;
+			cardpicture();
+		}
+		else if(m==2){
+		}
+		else{
+			alert("法力不足");
+		}	
+	}
+}
+function pcre2(){
+	if(pcard2=="-2-2"||pcard2=="-1-1"){
+		var m = manaenough(pcard2,mana);
+		if(m==true){
+			j2 = 0; 
+			cre(pcard2);
+			pcard2 = 0;
+			document.getElementById("phand2").innerHTML = pcard2;
+			cardpicture();
+		}
+		else{
+			alert("法力不足");
+		}
+	}
+	if(order==1&&pcard2!="-2-2"&&pcard2!="-1-1"){
+		var m = manaenough(pcard2,mana);
+		if(m==true){
+			cre(pcard2); 		
+		}
+		else if(m==3){
+			j2 = 0;  
+			cre(pcard2); 
+			pcard2=0;
+			document.getElementById("phand2").innerHTML = pcard2;
+			cardpicture();
+		}
+		else if(m==2){
+		}
+		else{
+			alert("法力不足");
+		}	
+	}
+}
+function pcre3(){
+	if(pcard3=="-2-2"||pcard3=="-1-1"){
+		var m = manaenough(pcard3,mana);
+		if(m==true){
+			j3 = 0; 
+			cre(pcard3);
+			pcard3 = 0;
+			document.getElementById("phand3").innerHTML = pcard3;
+			cardpicture();
+		}
+		else{
+			alert("法力不足");
+		}
+	}
+	if(order==1&&pcard3!="-2-2"&&pcard3!="-1-1"){
+		var m = manaenough(pcard3,mana);
+		if(m==true){
+			cre(pcard3); 		
+		}
+		else if(m==3){
+			j3 = 0;  
+			cre(pcard3); 
+			pcard3=0;
+			document.getElementById("phand3").innerHTML = pcard3;
+			cardpicture();
+		}
+		else if(m==2){
+		}
+		else{
+			alert("法力不足");
+		}	
+	}
+}
+function pcre4(){
+	if(pcard4=="-2-2"||pcard4=="-1-1"){
+		var m = manaenough(pcard4,mana);
+		if(m==true){
+			j4 = 0; 
+			cre(pcard4);
+			pcard4 = 0;
+			document.getElementById("phand4").innerHTML = pcard4;
+			cardpicture();
+		}
+		else{
+			alert("法力不足");
+		}
+	}
+	if(order==1&&pcard4!="-2-2"&&pcard4!="-1-1"){
+		var m = manaenough(pcard4,mana);
+		if(m==true){
+			cre(pcard4); 		
+		}
+		else if(m==3){
+			j4 = 0;  
+			cre(pcard4); 
+			pcard4=0;
+			document.getElementById("phand4").innerHTML = pcard4;
+			cardpicture();
+		}
+		else if(m==2){
+		}
+		else{
+			alert("法力不足");
+		}	
+	}
+}
+function pcre5(){
+	if(pcard5=="-2-2"||pcard5=="-1-1"){
+		var m = manaenough(pcard5,mana);
+		if(m==true){
+			j5 = 0; 
+			cre(pcard5);
+			pcard5 = 0;
+			document.getElementById("phand5").innerHTML = pcard5;
+			cardpicture();
+		}
+		else{
+			alert("法力不足");
+		}
+	}
+	if(order==1&&pcard5!="-2-2"&&pcard5!="-1-1"){
+		var m = manaenough(pcard5,mana);
+		if(m==true){
+			cre(pcard5); 		
+		}
+		else if(m==3){
+			j5 = 0;  
+			cre(pcard5); 
+			pcard5=0;
+			document.getElementById("phand5").innerHTML = pcard5;
+			cardpicture();
+		}
+		else if(m==2){
+		}
+		else{
+			alert("法力不足");
+		}	
+	}
+}
+//玩家2出牌
+function ccre1(){
+	if(ccard1=="-2-2"||ccard1=="-1-1"){
+		var m = manaenough(ccard1,cmana);
+		if(m==true){
+			h1 = 0; 
+			cre(ccard1);
+			ccard1 = 0;
+			document.getElementById("chand1").innerHTML = ccard1;
+			cardpicture();
+		}
+		else{
+			alert("法力不足");
+		}
+	}
+	if(order==2&&ccard1!="-2-2"&&ccard1!="-1-1"){
+		var m = manaenough(ccard1,cmana);
+		if(m==true){
+			cre(ccard1); 		
+		}
+		else if(m==3){
+			h1 = 0;  
+			cre(ccard1); 
+			ccard1=0;
+			document.getElementById("chand1").innerHTML = ccard1;
+			cardpicture();
+		}
+		else if(m==2){
+		}
+		else{
+			alert("法力不足");
+		}	
+	}
+}
+function ccre2(){
+	if(ccard2=="-2-2"||ccard2=="-1-1"){
+		var m = manaenough(ccard2,cmana);
+		if(m==true){
+			h2 = 0; 
+			cre(ccard2);
+			ccard2 = 0;
+			document.getElementById("chand2").innerHTML = ccard2;
+			cardpicture();
+		}
+		else{
+			alert("法力不足");
+		}
+	}
+	if(order==2&&ccard2!="-2-2"&&ccard2!="-1-1"){
+		var m = manaenough(ccard2,cmana);
+		if(m==true){
+			cre(ccard2); 		
+		}
+		else if(m==3){
+			h2 = 0;  
+			cre(ccard2); 
+			ccard2=0;
+			document.getElementById("chand2").innerHTML = ccard2;
+			cardpicture();
+		}
+		else if(m==2){
+		}
+		else{
+			alert("法力不足");
+		}	
+	}
+}
+function ccre3(){
+	if(ccard3=="-2-2"||ccard3=="-1-1"){
+		var m = manaenough(ccard3,cmana);
+		if(m==true){
+			h3 = 0; 
+			cre(ccard3);
+			ccard3 = 0;
+			document.getElementById("chand3").innerHTML = ccard3;
+			cardpicture();
+		}
+		else{
+			alert("法力不足");
+		}
+	}
+	if(order==2&&ccard3!="-2-2"&&ccard3!="-1-1"){
+		var m = manaenough(ccard3,cmana);
+		if(m==true){
+			cre(ccard3); 		
+		}
+		else if(m==3){
+			h3 = 0;  
+			cre(ccard3); 
+			ccard3=0;
+			document.getElementById("chand3").innerHTML = ccard3;
+			cardpicture();
+		}
+		else if(m==2){
+		}
+		else{
+			alert("法力不足");
+		}	
+	}
+}
+function ccre4(){
+	if(ccard4=="-2-2"||ccard4=="-1-1"){
+		var m = manaenough(ccard4,cmana);
+		if(m==true){
+			h4 = 0; 
+			cre(ccard4);
+			ccard4 = 0;
+			document.getElementById("chand4").innerHTML = ccard4;
+			cardpicture();
+		}
+		else{
+			alert("法力不足");
+		}
+	}
+	if(order==2&&ccard4!="-2-2"&&ccard4!="-1-1"){
+		var m = manaenough(ccard4,cmana);
+		if(m==true){
+			cre(ccard4); 		
+		}
+		else if(m==3){
+			h4 = 0;  
+			cre(ccard4); 
+			ccard4=0;
+			document.getElementById("chand4").innerHTML = ccard4;
+			cardpicture();
+		}
+		else if(m==2){
+		}
+		else{
+			alert("法力不足");
+		}	
+	}
+}
+function ccre5(){
+	if(ccard5=="-2-2"||ccard5=="-1-1"){
+		var m = manaenough(ccard5,cmana);
+		if(m==true){
+			h5 = 0; 
+			cre(ccard5);
+			ccard5 = 0;
+			document.getElementById("chand5").innerHTML = ccard5;
+			cardpicture();
+		}
+		else{
+			alert("法力不足");
+		}
+	}
+	if(order==2&&ccard5!="-2-2"&&ccard5!="-1-1"){
+		var m = manaenough(ccard5,cmana);
+		if(m==true){
+			cre(ccard5); 		
+		}
+		else if(m==3){
+			h5 = 0;  
+			cre(ccard5); 
+			ccard5=0;
+			document.getElementById("chand5").innerHTML = ccard5;
+			cardpicture();
+		}
+		else if(m==2){
+		}
+		else{
+			alert("法力不足");
+		}	
+	}
+}
+//判断法力足够
+var bo=0;
+var cbo=0;
+function manaenough(card,mana){
+	if(card=="1|1|d"&&mana>=2){
+		mana=mana-2;
+		document.getElementById("mana").innerHTML = mana;
+		bo=1;
+		return true;
+	}
+	if(card=="1|1"&&mana>=1){
+		mana=mana-1;
+		document.getElementById("mana").innerHTML = mana;
+		bo=1;
+		return true;
+	}
+	if(card=="2|2"&&mana>=2){
+		mana=mana-2;
+		document.getElementById("mana").innerHTML = mana; 
+		bo=1;
+		return true;
+	}
+	if(card=="3|3"&&mana>=3){
+		mana=mana-3;
+		document.getElementById("mana").innerHTML = mana;
+		bo=1;
+		return true;
+	}
+	if(card=="4|4"&&mana>=4){
+		mana=mana-4;
+		document.getElementById("mana").innerHTML = mana;
+		bo=1;
+		return true;
+	}
+	if(card=="-2-2"&&mana>=2){
+		mana=mana-2;
+		document.getElementById("mana").innerHTML = mana;
+		cbo=1;
+		return true;
+	}
+	if(card=="-1-1"&&mana>=1){
+		mana=mana-1;
+		document.getElementById("mana").innerHTML = mana;
+		cbo=1;
+		return true;
+	}
+	if(card=="mana"){
+		return 3;
+	}
+	if(card=="null"||card==null){
+		//alert("瞎按啥？");
+		return 2;
+	}
+}
+
+//判断生物
+var battlecard;
+function cre(card){
+	if(card=="mana"){
+		if(order==1){
+			mana++;
+			oldmana=mana;
+			document.getElementById("mana").innerHTML = mana;
+		}
+		if(order==2){
+			cmana++;
+			coldmana=cmana;
+			document.getElementById("cmana").innerHTML = cmana;
+		}
+	}
+	else{
+		battlecard = card;
+		if(order==1){
+			if(battlecard=="-2-2"||battlecard=="-1-1"){
+				if(cb1==1){
+					document.getElementById("cbp1").style.border = "2px solid red";
+				}
+				if(cb2==1){
+					document.getElementById("cbp2").style.border = "2px solid red";
+				}
+				if(cb3==1){
+					document.getElementById("cbp3").style.border = "2px solid red";
+				}
+				introinsblock();
+			}
+			else{
+				if(pb1==0){
+					document.getElementById("pbp1").style.border = "2px solid red";
+				}
+				if(pb2==0){
+					document.getElementById("pbp2").style.border = "2px solid red";
+				}
+				if(pb3==0){
+					document.getElementById("pbp3").style.border = "2px solid red";
+				}
+			}
+		}
+		if(order==2){
+			if(battlecard=="-2-2"||battlecard=="-1-1"){
+				if(pb1==1){
+					document.getElementById("pbp1").style.border = "2px solid red";
+				}
+				if(pb2==1){
+					document.getElementById("pbp2").style.border = "2px solid red";
+				}
+				if(pb3==1){
+					document.getElementById("pbp3").style.border = "2px solid red";
+				}
+				introinsblock();
+			}
+			else{
+				if(cb1==0){
+					document.getElementById("cbp1").style.border = "2px solid red";
+				}
+				if(cb2==0){
+					document.getElementById("cbp2").style.border = "2px solid red";
+				}
+				if(cb3==0){
+					document.getElementById("cbp3").style.border = "2px solid red";
+				}
+			}
+		}
+	}
+}
+//玩家1选择战场格
+var pbattle1,pbattle2,pbattle3;
+pbattle1="0|0";
+pbattle2="0|0";
+pbattle3="0|0";
+var pb1,pb2,pb3;
+pb1=0;
+pb2=0;
+pb3=0;
+function pblock1(card){
+	if(pb1==0&&bo==1){
+		pbattle1=card;
+		pb1=1;
+		getpandt();
+		battlepicture();
+		document.getElementById("pbp1").style.border = "0px";
+		document.getElementById("pbp2").style.border = "0px";
+		document.getElementById("pbp3").style.border = "0px";
+		bo=0;
+		if(pb1==1||pb2==1||pb3==1){
+				document.getElementById("pcbutton").style.display = "block";
+				document.getElementById("pbbutton").style.display = "none";
+		}
+		if(pcard1==card){
+			pcard1="null";
+			j1=0;
+			document.getElementById("phand1").innerHTML = pcard1;
+			cardpicture();
+			return;
+		}
+		if(pcard2==card){
+			pcard2="null";
+			j2=0;
+			document.getElementById("phand2").innerHTML = pcard1;
+			cardpicture();
+			return;
+		}
+		if(pcard3==card){
+			pcard3="null";
+			j3=0;
+			document.getElementById("phand3").innerHTML = pcard3;
+			cardpicture();
+			return;
+		}
+		if(pcard4==card){
+			pcard4="null";
+			j4=0;
+			document.getElementById("phand4").innerHTML = pcard4;
+			cardpicture();
+			return;
+		}
+		if(pcard5==card){
+			pcard5="null";
+			j5=0;
+			document.getElementById("phand5").innerHTML = pcard5;
+			cardpicture();
+			return;
+		}
+	}
+	else if(bo==0){
+	}
+	else{
+		alert("already have");
+	}
+}
+function pblock2(card){
+	if(pb2==0&&bo==1){
+		pbattle2=card;
+		pb2=1;
+		getpandt();
+		battlepicture();
+		document.getElementById("pbp1").style.border = "0px";
+		document.getElementById("pbp2").style.border = "0px";
+		document.getElementById("pbp3").style.border = "0px";
+		bo=0;
+		if(pb1==1||pb2==1||pb3==1){
+				document.getElementById("pcbutton").style.display = "block";
+				document.getElementById("pbbutton").style.display = "none";
+		}
+		if(pcard1==card){
+			pcard1="null";
+			j1=0;
+			document.getElementById("phand1").innerHTML = pcard1;
+			cardpicture();
+			return;
+		}
+		if(pcard1==card){
+			pcard1="null";
+			j2=0;
+			document.getElementById("phand2").innerHTML = pcard1;
+			cardpicture();
+			return;
+		}
+		if(pcard3==card){
+			pcard3="null";
+			j3=0;
+			document.getElementById("phand3").innerHTML = pcard3;
+			cardpicture();
+			return;
+		}
+		if(pcard4==card){
+			pcard4="null";
+			j4=0;
+			document.getElementById("phand4").innerHTML = pcard4;
+			cardpicture();
+			return;
+		}
+		if(pcard5==card){
+			pcard5="null";
+			j5=0;
+			document.getElementById("phand5").innerHTML = pcard5;
+			cardpicture();
+			return;
+		}
+	}
+	else if(bo==0){
+	}
+	else{
+		alert("already have");
+	}
+}
+function pblock3(card){
+	if(pb3==0&&bo==1){
+		pbattle3=card;
+		pb3=1;
+		getpandt();
+		battlepicture();
+		document.getElementById("pbp1").style.border = "0px";
+		document.getElementById("pbp2").style.border = "0px";
+		document.getElementById("pbp3").style.border = "0px";
+		bo=0;
+		if(pb1==1||pb2==1||pb3==1){
+				document.getElementById("pcbutton").style.display = "block";
+				document.getElementById("pbbutton").style.display = "none";
+		}
+		if(pcard1==card){
+			pcard1="null";
+			j1=0;
+			document.getElementById("phand1").innerHTML = pcard1;
+			cardpicture();
+			return;
+		}
+		if(pcard1==card){
+			pcard1="null";
+			j2=0;
+			document.getElementById("phand2").innerHTML = pcard1;
+			cardpicture();
+			return;
+		}
+		if(pcard3==card){
+			pcard3="null";
+			j3=0;
+			document.getElementById("phand3").innerHTML = pcard3;
+			cardpicture();
+			return;
+		}
+		if(pcard4==card){
+			pcard4="null";
+			j4=0;
+			document.getElementById("phand4").innerHTML = pcard4;
+			cardpicture();
+			return;
+		}
+		if(pcard5==card){
+			pcard5="null";
+			j5=0;
+			document.getElementById("phand5").innerHTML = pcard5;
+			cardpicture();
+			return;
+		}
+	}
+	else if(bo==0){
+	}
+	else{
+		alert("already have");
+	}
+}
+
+//玩家2选择战场格
+var cbattle1,cbattle2,cbattle3;
+cbattle1="0|0";
+cbattle2="0|0";
+cbattle3="0|0";
+var cb1,cb2,cb3;
+cb1=0;
+cb2=0;
+cb3=0;
+function cblock1(card){
+	if(cb1==0&&cbo==1){
+		cbattle1=card;
+		cb1=1;
+		getpandt();
+		battlepicture();
+		document.getElementById("cbp1").style.border = "0px";
+		document.getElementById("cbp2").style.border = "0px";
+		document.getElementById("cbp3").style.border = "0px";
+		cbo=0;
+		if(cb1==1||cb2==1||cb3==1){
+				document.getElementById("ccbutton").style.display = "block";
+				document.getElementById("cbbutton").style.display = "none";
+		}
+		if(ccard1==card){
+			ccard1="null";
+			j1=0;
+			document.getElementById("chand1").innerHTML = ccard1;
+			cardpicture();
+			return;
+		}
+		if(ccard2==card){
+			ccard2="null";
+			j2=0;
+			document.getElementById("chand2").innerHTML = ccard1;
+			cardpicture();
+			return;
+		}
+		if(ccard3==card){
+			ccard3="null";
+			j3=0;
+			document.getElementById("chand3").innerHTML = ccard3;
+			cardpicture();
+			return;
+		}
+		if(ccard4==card){
+			ccard4="null";
+			j4=0;
+			document.getElementById("chand4").innerHTML = ccard4;
+			cardpicture();
+			return;
+		}
+		if(ccard5==card){
+			ccard5="null";
+			j5=0;
+			document.getElementById("chand5").innerHTML = ccard5;
+			cardpicture();
+			return;
+		}
+	}
+	else if(cbo==0){
+	}
+	else{
+		alert("already have");
+	}
+}
+function cblock2(card){
+	if(cb2==0&&cbo==1){
+		cbattle2=card;
+		cb2=1;
+		getpandt();
+		battlepicture();
+		document.getElementById("cbp1").style.border = "0px";
+		document.getElementById("cbp2").style.border = "0px";
+		document.getElementById("pbp3").style.border = "0px";
+		cbo=0;
+		if(cb1==1||cb2==1||cb3==1){
+				document.getElementById("ccbutton").style.display = "block";
+				document.getElementById("cbbutton").style.display = "none";
+		}
+		if(ccard1==card){
+			ccard1="null";
+			j1=0;
+			document.getElementById("chand1").innerHTML = ccard1;
+			cardpicture();
+			return;
+		}
+		if(ccard1==card){
+			ccard1="null";
+			j2=0;
+			document.getElementById("chand2").innerHTML = ccard1;
+			cardpicture();
+			return;
+		}
+		if(ccard3==card){
+			ccard3="null";
+			j3=0;
+			document.getElementById("chand3").innerHTML = ccard3;
+			cardpicture();
+			return;
+		}
+		if(ccard4==card){
+			ccard4="null";
+			j4=0;
+			document.getElementById("chand4").innerHTML = ccard4;
+			cardpicture();
+			return;
+		}
+		if(ccard5==card){
+			ccard5="null";
+			j5=0;
+			document.getElementById("chand5").innerHTML = ccard5;
+			cardpicture();
+			return;
+		}
+	}
+	else if(cbo==0){
+	}
+	else{
+		alert("already have");
+	}
+}
+function cblock3(card){
+	if(cb3==0&&cbo==1){
+		cbattle3=card;
+		cb3=1;
+		getpandt();
+		battlepicture();
+		document.getElementById("cbp1").style.border = "0px";
+		document.getElementById("cbp2").style.border = "0px";
+		document.getElementById("cbp3").style.border = "0px";
+		cbo=0;
+		if(cb1==1||cb2==1||cb3==1){
+				document.getElementById("ccbutton").style.display = "block";
+				document.getElementById("cbbutton").style.display = "none";
+		}
+		if(ccard1==card){
+			ccard1="null";
+			j1=0;
+			document.getElementById("chand1").innerHTML = ccard1;
+			cardpicture();
+			return;
+		}
+		if(ccard1==card){
+			ccard1="null";
+			j2=0;
+			document.getElementById("chand2").innerHTML = ccard1;
+			cardpicture();
+			return;
+		}
+		if(ccard3==card){
+			ccard3="null";
+			j3=0;
+			document.getElementById("chand3").innerHTML = ccard3;
+			cardpicture();
+			return;
+		}
+		if(ccard4==card){
+			ccard4="null";
+			j4=0;
+			document.getElementById("chand4").innerHTML = ccard4;
+			cardpicture();
+			return;
+		}
+		if(ccard5==card){
+			ccard5="null";
+			j5=0;
+			document.getElementById("chand5").innerHTML = ccard5;
+			cardpicture();
+			return;
+		}
+	}
+	else if(cbo==0){
+	}
+	else{
+		alert("already have");
+	}
+}
+
+//转换字符至数值
+var power1,tough1,abi1,cpower1,ctough1,cabi1;
+var power2,tough2,abi2,cpower2,ctough2,cabi2;
+var power3,tough3,abi3,cpower3,ctough3,cabi3;
+power1=0;power2=0;power3=0;tough1=0;tough2=0;tough3=0;abi1=0;abi2=0;abi3=0;
+cpower1=0;cpower2=0;cpower3=0;ctough1=0;ctough2=0;ctough3=0;cabi1=0;cabi2=0;cabi3=0;
+function getpandt(){
+	if(pbattle1=="0|0"){
+		power1=0;
+		tough1=0;
+		abi1=0;
+	}
+	if(pbattle2=="0|0"){
+		power2=0;
+		tough2=0;
+		abi2=0;
+	}
+	if(pbattle3=="0|0"){
+		power3=0;
+		tough3=0;
+		abi3=0;
+	}
+	if(cbattle1=="0|0"){
+		cpower1=0;
+		ctough1=0;
+		cabi1=0;
+	}
+	if(cbattle2=="0|0"){
+		cpower2=0;
+		ctough2=0;
+		cabi2=0;
+	}
+	if(cbattle3=="0|0"){
+		cpower3=0;
+		ctough3=0;
+		cabi3=0;
+	}
+	//
+	if(pbattle1=="1|1|d"){
+		power1=1;
+		tough1=1;
+		abi1=1;
+	}
+	if(pbattle2=="1|1|d"){
+		power2=1;
+		tough2=1;
+		abi2=1;
+	}
+	if(pbattle3=="1|1|d"){
+		power3=1;
+		tough3=1;
+		abi3=1;
+	}
+	if(cbattle1=="1|1|d"){
+		cpower1=1;
+		ctough1=1;
+		cabi1=1;
+	}
+	if(cbattle2=="1|1|d"){
+		cpower2=1;
+		ctough2=1;
+		cabi2=1;
+	}
+	if(cbattle3=="1|1|d"){
+		cpower3=1;
+		ctough3=1;
+		cabi3=1;
+	}
+	//
+	if(pbattle1=="1|1"){
+		power1=1;
+		tough1=1;
+		abi1=0;
+	}
+	if(pbattle2=="1|1"){
+		power2=1;
+		tough2=1;
+		abi2=0;
+	}
+	if(pbattle3=="1|1"){
+		power3=1;
+		tough3=1;
+		abi3=0;
+	}
+	if(cbattle1=="1|1"){
+		cpower1=1;
+		ctough1=1;
+		cabi1=0;
+	}
+	if(cbattle2=="1|1"){
+		cpower2=1;
+		ctough2=1;
+		cabi2=0;
+	}
+	if(cbattle3=="1|1"){
+		cpower3=1;
+		ctough3=1;
+		cabi3=0;
+	}
+	//
+	if(pbattle1=="2|2"){
+		power1=2;
+		tough1=2;
+		abi1=0;
+	}
+	if(pbattle2=="2|2"){
+		power2=2;
+		tough2=2;
+		abi2=0;
+	}
+	if(pbattle3=="2|2"){
+		power3=2;
+		tough3=2;
+		abi3=0;
+	}
+	if(cbattle1=="2|2"){
+		cpower1=2;
+		ctough1=2;
+		cabi1=0;
+	}
+	if(cbattle2=="2|2"){
+		cpower2=2;
+		ctough2=2;
+		cabi2=0;
+	}
+	if(cbattle3=="2|2"){
+		cpower3=2;
+		ctough3=2;
+		cabi3=0;
+	}
+	//
+	if(pbattle1=="3|3"){
+		power1=3;
+		tough1=3;
+		abi1=0;
+	}
+	if(pbattle2=="3|3"){
+		power2=3;
+		tough2=3;
+		abi2=0;
+	}
+	if(pbattle3=="3|3"){
+		power3=3;
+		tough3=3;
+		abi3=0;
+	}
+	if(cbattle1=="3|3"){
+		cpower1=3;
+		ctough1=3;
+		cabi1=0;
+	}
+	if(cbattle2=="3|3"){
+		cpower2=3;
+		ctough2=3;
+		cabi2=0;
+	}
+	if(cbattle3=="3|3"){
+		cpower3=3;
+		ctough3=3;
+		cabi3=0;
+	}
+	//
+	if(pbattle1=="4|4"){
+		power1=4;
+		tough1=4;
+		abi1=0;
+	}
+	if(pbattle2=="4|4"){
+		power2=4;
+		tough2=4;
+		abi2=0;
+	}
+	if(pbattle3=="4|4"){
+		power3=4;
+		tough3=4;
+		abi3=0;
+	}
+	if(cbattle1=="4|4"){
+		cpower1=4;
+		ctough1=4;
+		cabi1=0;
+	}
+	if(cbattle2=="4|4"){
+		cpower2=4;
+		ctough2=4;
+		cabi2=0;
+	}
+	if(cbattle3=="4|4"){
+		cpower3=4;
+		ctough3=4;
+		cabi3=0;
+	}
+}
+
+//战斗
+function battle(){
+	if(turn==0){
+		pa1 = document.getElementById("pac1").checked;
+		pa2 = document.getElementById("pac2").checked;
+		pa3 = document.getElementById("pac3").checked;
+		if(pa1){
+			if(ctough1==0&&power1!=0){
+				clife = clife - power1;
+				document.getElementById("clife").style.backgroundColor="yellow";
+			}
+			if(abi1==1||cabi1==1){
+				if(ctough1==0||tough1==0){
+				
+				}
+				else{
+					power1=0;tough1=0;abi1=0;
+					cpower1=0;ctough1=0;cabi1=0;
+				}
+			}
+			ctough1=ctough1-power1;
+			tough1=tough1-cpower1;
+		}
+		if(pa2){
+			if(ctough2==0&&power2!=0){
+				clife = clife - power2;
+				document.getElementById("clife").style.backgroundColor="yellow";
+			}
+			if(abi2==1||cabi2==1){
+				if(ctough2==0||tough2==0){
+				
+				}
+				else{
+					power2=0;tough2=0;abi2=0;
+					cpower2=0;ctough2=0;cabi2=0;
+				}
+			}
+			ctough2=ctough2-power2;
+			tough2=tough2-cpower2;
+		}
+		if(pa3){
+			if(ctough3==0&&power3!=0){
+				clife = clife - power3;
+				document.getElementById("clife").style.backgroundColor="yellow";
+			}
+			if(abi3==1||cabi3==1){
+				if(ctough3==0||tough3==0){
+				
+				}
+				else{
+					power3=0;tough3=0;abi3=0;
+					cpower3=0;ctough3=0;cabi3=0;
+				}
+			}
+			ctough3=ctough3-power3;
+			tough3=tough3-cpower3;
+		}
+	}
+	//
+	if(order==2){
+		if(tough1==0&&cpower1!=0){
+			life = life - cpower1;
+			document.getElementById("life").style.backgroundColor="yellow";
+		}
+		if(tough2==0&&cpower2!=0){
+			life = life - cpower2;
+			document.getElementById("life").style.backgroundColor="yellow";
+		}
+		if(tough3==0&&cpower3!=0){
+			life = life - cpower3;
+			document.getElementById("life").style.backgroundColor="yellow";
+		}
+		//
+		if(abi1==1||cabi1==1){
+			if(ctough1==0||tough1==0){
+			
+			}
+			else{
+				power1=0;tough1=0;abi1=0;
+				cpower1=0;ctough1=0;cabi1=0;
+			}
+		}
+		if(abi2==1||cabi2==1){
+			if(ctough2==0||tough2==0){
+			
+			}
+			else{
+				power2=0;tough2=0;abi2=0;
+				cpower2=0;ctough2=0;cabi2=0;
+			}
+		}
+		if(abi3==1||cabi3==1){
+			if(ctough3==0||tough3==0){
+			
+			}
+			else{
+				power3=0;tough3=0;abi3=0;
+				cpower3=0;ctough3=0;cabi3=0;
+			}
+		}
+		tough1=tough1-cpower1;
+		tough2=tough2-cpower2;
+		tough3=tough3-cpower3;
+		ctough1=ctough1-power1;
+		ctough2=ctough2-power2;
+		ctough3=ctough3-power3;
+	}
+	document.getElementById("life").innerHTML = life;
+	document.getElementById("clife").innerHTML = clife;
+}
+
+//转换数值为字符
+function returnpandt(){
+	if(tough1==1&&abi1==1){
+		pbattle1="1|1|d";
+	}
+	if(tough2==1&&abi2==1){
+		pbattle2="1|1|d";
+	}
+	if(tough3==1&&abi3==1){
+		pbattle3="1|1|d";
+	}
+	if(ctough1==1&&cabi1==1){
+		cbattle1="1|1|d";
+	}
+	if(ctough2==1&&cabi2==1){
+		cbattle2="1|1|d";
+	}
+	if(ctough3==1&&cabi3==1){
+		cbattle3="1|1|d";
+	}
+	//
+	if(tough1==1&&abi1==0){
+		pbattle1="1|1";
+	}
+	if(tough2==1&&abi2==0){
+		pbattle2="1|1";
+	}
+	if(tough3==1&&abi3==0){
+		pbattle3="1|1";
+	}
+	if(ctough1==1&&cabi1==0){
+		cbattle1="1|1";
+	}
+	if(ctough2==1&&cabi2==0){
+		cbattle2="1|1";
+	}
+	if(ctough3==1&&cabi3==0){
+		cbattle3="1|1";
+	}
+	//
+	if(tough1==2&&abi1==0){
+		pbattle1="2|2";
+	}
+	if(tough2==2&&abi2==0){
+		pbattle2="2|2";
+	}
+	if(tough3==2&&abi3==0){
+		pbattle3="2|2";
+	}
+	if(ctough1==2&&cabi1==0){
+		cbattle1="2|2";
+	}
+	if(ctough2==2&&cabi2==0){
+		cbattle2="2|2";
+	}
+	if(ctough3==2&&cabi3==0){
+		cbattle3="2|2";
+	}
+	//
+	if(tough1==3&&abi1==0){
+		pbattle1="3|3";
+	}
+	if(tough2==3&&abi2==0){
+		pbattle2="3|3";
+	}
+	if(tough3==3&&abi3==0){
+		pbattle3="3|3";
+	}
+	if(ctough1==3&&cabi1==0){
+		cbattle1="3|3";
+	}
+	if(ctough2==3&&cabi2==0){
+		cbattle2="3|3";
+	}
+	if(ctough3==3&&cabi3==0){
+		cbattle3="3|3";
+	}
+	//
+	if(tough1==4&&abi1==0){
+		pbattle1="4|4";
+	}
+	if(tough2==4&&abi2==0){
+		pbattle2="4|4";
+	}
+	if(tough3==4&&abi3==0){
+		pbattle3="4|4";
+	}
+	if(ctough1==4&&cabi1==0){
+		cbattle1="4|4";
+	}
+	if(ctough2==4&&cabi2==0){
+		cbattle2="4|4";
+	}
+	if(ctough3==4&&cabi3==0){
+		cbattle3="4|4";
+	}
+	//
+	if(tough1<=0){
+		pbattle1="0|0";
+		pb1=0;
+	}
+	if(tough2<=0){
+		pbattle2="0|0";
+		pb2=0;
+	}
+	if(tough3<=0){
+		pbattle3="0|0";
+		pb3=0;
+	}
+	if(ctough1<=0){
+		cbattle1="0|0";
+		cb1=0;
+	}
+	if(ctough2<=0){
+		cbattle2="0|0";
+		cb2=0;
+	}
+	if(ctough3<=0){
+		cbattle3="0|0";
+		cb3=0;
+	}
+	battlepicture();
+}
+
+</script>
+</body></html>
